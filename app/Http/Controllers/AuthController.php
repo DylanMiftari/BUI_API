@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Action\Users\LoginAction;
-use App\Http\Action\Users\RegisterAction;
+use App\Http\Actions\Users\LoginAction;
+use App\Http\Actions\Users\RegisterAction;
 use App\Http\Requests\User\LoginRequest;
 use App\Http\Requests\User\RegisterRequest;
 use Illuminate\Http\Request;
