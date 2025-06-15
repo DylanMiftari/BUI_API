@@ -46,6 +46,7 @@ app/
   ├── Http/
   │   ├── Actions/     → Classes Actions
   │   ├── Controllers/ → Contrôleurs API
+  │   ├── Resources/   → Ressources de l'API
   │   ├── Requests/    → Validations des requêtes
   │   └── Middleware/  → Middleware personnalisés
   ├── Models/          → Modèles Eloquent
@@ -63,6 +64,7 @@ Chaque dossier de l'architecture doivent eux-mêmes être séparés en différen
 - __Exceptions__ : Contient les excéptions personnalisées, qu'il est possible de lancer.
 - __Actions__ : Chaque fichier contient une classe métier réalisant une action spécifique (exemple : Créer une entreprise, Faire une demande prêt à la banque...). Chaque classe action contient une seule méthode nommée `handle`, ces classes peuvent être injectée dans les méthodes des controllers.
 - __Controllers__ : Reçoivent les requêtes HTTP, vérifient les données, apellent les services et actions adaptés et renvoie une réponse. Ils ne doivent contenir aucune logique métier.
+- __Resources__ : Elles transformes et formatent proprement les modèles retourner par l'API (exemple : cacher des champs sensibles).
 - __Requests__ : Contient uniquement la validation des données.
 - __Middleware__ : Filtres exectués avant le traitement d'une requête permettant de vérifier certaines choses comme l'authentification de l'utilisateur.
 - __Models__ : Contient les modèles liés à la base de données. Ces classes font également office de Repository.
