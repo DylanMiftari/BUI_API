@@ -15,7 +15,7 @@ class LoginRequest extends FormRequest
     {
         return [
             "pseudo" => ["required", "string", "max:100", "exists:users,pseudo"],
-            "password" => ["required", "string", "confirmed"]
+            "password" => ["required", "string"]
         ];
     }
 }
