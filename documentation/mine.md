@@ -1,4 +1,4 @@
-## Documentation for mine route (/mine)
+## Documentation for mine route (/api/mine)
 
 ### RGet all user's mines
 This route return all user's mines

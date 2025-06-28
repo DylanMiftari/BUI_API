@@ -56,6 +56,8 @@ app/
 routes/
   ├── api.php          → Routes générique de l'API
   └── ...              → Autres routes séparées dans d'autres fichiers
+documentation/
+   ├── ficher markdown comprenant la documentation de chaque route. Les routes sont réparties en plusieurs fichiers.
 ```
 Chaque dossier de l'architecture doivent eux-mêmes être séparés en différents sous-dossiers pour mieux s'y retrouver. Exemple : Actions/Users, Requests/Users, Controllers/Company.
 
