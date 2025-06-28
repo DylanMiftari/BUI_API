@@ -17,4 +17,10 @@ class With {
         return self::has($search) && Auth::id() === $userMustBeLogged->id;
     }
 
+    public static function add(string $withToAdd) {
+        if(!self::has($withToAdd)) {
+            request()->request->set("with", request()->input("with").",$withToAdd");
+        }
+    }
+
 }
