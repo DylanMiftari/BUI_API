@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Helpers\With;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,6 +18,7 @@ class ResourceResource extends JsonResource
         return [
             "id" => $this->id,
             "name" => $this->name,
+            "price" => $this->when(With::has("price"), $this->marketPrice)
         ];
     }
 }
