@@ -6,7 +6,9 @@ use App\Http\Actions\Users\LoginAction;
 use App\Http\Actions\Users\RegisterAction;
 use App\Http\Requests\User\LoginRequest;
 use App\Http\Requests\User\RegisterRequest;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -34,9 +36,9 @@ class AuthController extends Controller
         return response()->json(['user' => $user, 'token' => $token]);
     }
 
-    public function user(Request $request)
+    public function getUser()
     {
-        return $request->user();
+        return new UserResource(Auth::user());
     }
 
     public function logout(Request $request)

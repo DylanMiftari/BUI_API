@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Http\Resources;
+
+use App\Helpers\With;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class UserResource extends JsonResource
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(Request $request): array
+    {
+        return [
+            "id" => $this->id,
+            "pseudo" => $this->pseudo,
+            "userMoney" => $this->when(With::securedHas("userMoney", $this->resource), $this->playerMoney),
+            "companies" => $this->when(With::has("company"), CompanyResource::collection($this->companies)),
+            "mines" => $this->when(With::has("mine"), MineResource::collection($this->mines)),
+        ];
+    }
+}

@@ -49,4 +49,8 @@ class User extends Authenticatable
     public function companies(): HasMany {
         return $this->hasMany(Company::class, "userId", "id");
     }
+
+    public function mines(): HasMany {
+        return $this->hasMany(Mine::class, "userId", "id");
+    }
 }

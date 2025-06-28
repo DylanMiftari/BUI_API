@@ -54,3 +54,37 @@ The user and his token
     "token": "his bearer token"
 }
 ```
+
+---
+### Get current user
+This route return the data of the currently logged user
+**Method :** GET  
+**Route :** /me  
+**Query params :**
+- with=value1,value2...
+
+**Return :**  
+The currently logged user
+```json
+{
+    "id": "id of the user",
+    "pseudo": "pseudo of the user",
+    "userMoney": "user money of the user", // if "userMoney" is present in with param
+    "companies": [ // if "company" is present in with param
+        {
+            "id": "id of the company",
+            "name": "name of the company",
+            "type": "type of the company",
+            "activated": "boolean indicate if company is activated"
+        },
+        ...
+    ],
+    "mines": [ // if "mine" is present in with param
+        {
+            "id": "id of the mine",
+            "level": "level of the mine"
+        }
+        ...
+    ]
+}
+```

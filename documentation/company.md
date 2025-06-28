@@ -16,11 +16,9 @@ This route create a company for the connected user. It also create sub-company (
 The created company
 ```json
 {
-    "data": {
-        "id": "id of the company",
-        "name": "name of the company",
-        "type": "type of the company",
-    }
+    "id": "id of the company",
+    "name": "name of the company",
+    "type": "type of the company",
 }
 ```
 ---
