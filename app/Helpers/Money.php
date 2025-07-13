@@ -1,6 +1,7 @@
 <?php
 namespace App\Helpers;
 
+use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +34,7 @@ class Money {
      * @return void
      */
     public static function pay(float $price) {
-        $user = Auth::user();
+        $user = User::find(Auth::id());
         $user->playerMoney = round($user->playerMoney - $price, 2);
         $user->save();
     }

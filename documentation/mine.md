@@ -20,3 +20,13 @@ This route return all user's mines
 ]
 ```
 ---
+### Upgrade a mine
+This route upgrade a mine. Player must have enough money to upgrade his mine. You can't upgrade a mine, which is already at the maximum level.  
+**Method :** PATCH  
+**Route :** /{mine_id}/upgrade  
+**Return :**
+```json
+{
+    "result": true // If the upgrade has correctly done
+}
+```
