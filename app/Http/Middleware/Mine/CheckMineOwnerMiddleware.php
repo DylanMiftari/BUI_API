@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Mine;
 
-use App\Exceptions\InTravelException;
+use App\Exceptions\NotYourMineException;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class InTravelMiddleware
+class CheckMineOwnerMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,9 +17,11 @@ class InTravelMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->inTravel) {
-            throw new InTravelException();
+        $mine = $request->route()->parameter("mine");
+        if($mine->userId != Auth::id()) {
+            throw new NotYourMineException();
         }
+
         return $next($request);
     }
 }

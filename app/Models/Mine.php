@@ -16,4 +16,13 @@ class Mine extends Model
     public function resource(): HasOne {
         return $this->hasOne(Resource::class, "id", "currentTargetResourceId");
     }
+
+    public function mineLevel(): HasOne {
+        return $this->hasOne(MineLevel::class, "level", "level");
+    }
+
+    public function upgrade() {
+        $this->level++;
+        $this->save();
+    }
 }

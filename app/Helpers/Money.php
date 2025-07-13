@@ -7,6 +7,15 @@ use Illuminate\Support\Facades\Auth;
 
 class Money {
 
+    /**
+     * Check if connected user has enough money
+     * 
+     * This function throw error if user has not enough money
+     * @param float $price
+     * @throws \Illuminate\Auth\AuthenticationException
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return bool
+     */
     public static function check(float $price) {
         if(!Auth::check()) {
             throw new AuthenticationException();
@@ -16,6 +25,17 @@ class Money {
         }
 
         return Auth::user()->playerMoney >= $price;
+    }
+
+    /**
+     * Remove money from connected user
+     * @param float $price
+     * @return void
+     */
+    public static function pay(float $price) {
+        $user = Auth::user();
+        $user->playerMoney = round($user->playerMoney - $price, 2);
+        $user->save();
     }
 
 }

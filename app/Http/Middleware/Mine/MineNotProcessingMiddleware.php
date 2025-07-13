@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\mine;
 
-use App\Exceptions\InTravelException;
+use App\Exceptions\mine\MineIsInProcessingException;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class InTravelMiddleware
+class MineNotProcessingMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,8 +16,9 @@ class InTravelMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->inTravel) {
-            throw new InTravelException();
+        $mine = $request->route()->parameter("mine");
+        if($mine->currentTargetResourceId !== null) {
+            throw new MineIsInProcessingException();
         }
         return $next($request);
     }
