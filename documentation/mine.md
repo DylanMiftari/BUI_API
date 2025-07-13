@@ -30,3 +30,26 @@ This route upgrade a mine. Player must have enough money to upgrade his mine. Yo
     "result": true // If the upgrade has correctly done
 }
 ```
+---
+### Start mine processing
+This route start a mine processing  
+**Method :** PATCH  
+**Route :** /{mine_id}/process  
+**Payload :**
+```json
+{
+    "resource_id": "required | exsits in database | the mine is at enough high level to mine this resource"
+}
+```
+**Return :**
+```json
+{
+    "id": "id of the mine",
+    "level": "level of the mine",
+    "startedAt": "Datetime of the process start",
+    "resource": {
+        "id": "id of the resource",
+        "name": "name of the resource"
+    }
+}
+```

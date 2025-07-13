@@ -5,6 +5,8 @@ Les règles du jeu sont explquées [ici](https://docs.google.com/document/d/1nl1
 
 Ce projet est fait avec le frameword [Laravel 12](https://laravel.com/)
 
+Si vous utilisez l'API pour faire une application, prenez bien en compte qu'elle utilise la timezone UTC pour les dates et heures.
+
 ---
 
 ## ⚙️ Installation
