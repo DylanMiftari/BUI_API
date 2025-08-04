@@ -12,10 +12,14 @@ This route return all user's mines
 ```json
 [
     {
-        "id": "id of the resource",
-        "name": "name of the resource",
-        "price": "price for 0.1kg of the resource"
-    },
+        "id": "id de la mine",
+        "level": "mine level",
+        "startedAt": "the beginning of the mining",
+        "resource": {
+            "id": "current mining resource id",
+            "name": "current mining resource name"
+        }
+    }
     ...
 ]
 ```
