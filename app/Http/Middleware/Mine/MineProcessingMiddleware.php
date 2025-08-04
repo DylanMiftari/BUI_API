@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Middleware\mine;
+namespace App\Http\Middleware\Mine;
 
-use App\Exceptions\Mine\MineIsInProcessingException;
+use App\Exceptions\Mine\MineIsNotInProcessingException;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class MineNotProcessingMiddleware
+class MineProcessingMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,8 @@ class MineNotProcessingMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $mine = $request->route()->parameter("mine");
-        if($mine->currentTargetResourceId !== null) {
-            throw new MineIsInProcessingException();
+        if($mine->currentTargetResourceId === null) {
+            throw new MineIsNotInProcessingException();
         }
         return $next($request);
     }

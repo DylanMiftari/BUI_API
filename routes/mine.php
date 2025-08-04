@@ -12,5 +12,8 @@ Route::middleware(["auth:sanctum", "in_travel"])->prefix("/mine")->group(functio
             Route::patch("/upgrade", [MineController::class, "upgrade"]);
             Route::patch("/process", [MineController::class, "process"]);
         });
+        Route::middleware(["mine_processing"])->group(function() {
+            Route::patch("/collect", [MineController::class, "collect"]);
+        });
     });
 });

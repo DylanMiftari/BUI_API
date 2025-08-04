@@ -57,3 +57,14 @@ This route start a mine processing
     }
 }
 ```
+---
+### Collect a mine
+This route collect resources from mine 
+**Method :** PATCH  
+**Route :** /{mine_id}/collect  
+**Return :**
+```json
+{
+    "result": true // If the collect has correctly done
+}
+```

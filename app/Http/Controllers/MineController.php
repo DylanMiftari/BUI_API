@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Resource as HelpersResource;
 use App\Helpers\With;
+use App\Http\Actions\Mine\CollectMineAction;
 use App\Http\Actions\Mine\ProcessMineAction;
 use App\Http\Actions\Mine\UpgradeMineAction;
 use App\Http\Requests\Mine\MineProcessRequest;
@@ -38,5 +40,15 @@ class MineController extends Controller
 
         With::add("resource");
         return new MineResource($updatedMine);
+    }
+
+    public function collect(Mine $mine, CollectMineAction $action) {
+        $this->authorize("collect", $mine);
+
+        $action->handle($mine);
+
+        return response()->json([
+            "result" => true
+        ]);
     }
 }

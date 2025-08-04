@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -52,5 +53,24 @@ class User extends Authenticatable
 
     public function mines(): HasMany {
         return $this->hasMany(Mine::class, "userId", "id");
+    }
+
+    public function resources(): HasManyThrough {
+        return $this->hasManyThrough(
+            Resource::class,
+            UserResource::class,
+            "userId",
+            "id",
+            "id",
+            "resourceId"
+        );
+    }
+
+    public function userResources(): HasMany {
+        return $this->hasMany(UserResource::class, "userId", "id");
+    }
+
+    public function resourceQuantity(): float {
+        return UserResource::where("userId", $this->id)->sum("quantity");
     }
 }

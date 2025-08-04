@@ -13,6 +13,10 @@ class Mine extends Model
         "userId"
     ];
 
+    protected $casts = [
+        "startedAt" => "datetime"
+    ];
+
     public function resource(): HasOne {
         return $this->hasOne(Resource::class, "id", "currentTargetResourceId");
     }
