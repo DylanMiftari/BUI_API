@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Resource as HelpersResource;
 use App\Helpers\With;
+use App\Http\Actions\Mine\BuyNewMineAction;
 use App\Http\Actions\Mine\CollectMineAction;
 use App\Http\Actions\Mine\ProcessMineAction;
 use App\Http\Actions\Mine\UpgradeMineAction;
@@ -50,5 +51,13 @@ class MineController extends Controller
         return response()->json([
             "result" => true
         ]);
+    }
+
+    public function buyNewMine(BuyNewMineAction $action) {
+        $this->authorize("buy", Mine::class);
+
+        $mine = $action->handle();
+
+        return new MineResource($mine);
     }
 }

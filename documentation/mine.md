@@ -68,3 +68,16 @@ This route collect resources from mine
     "result": true // If the collect has correctly done
 }
 ```
+---
+### Buy a mine
+This route buy a new mine for auth user
+**Method :** POST  
+**Route :** /buy
+**Return :**
+```json
+{
+    "id": "the id of the new mine",
+    "level": 1,
+    "startedAt": null
+}
+```

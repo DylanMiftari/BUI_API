@@ -9,6 +9,7 @@ use App\Models\MineLevel;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class MinePolicy
 {
@@ -30,6 +31,15 @@ class MinePolicy
         if(!Resource::canStore($mine->resource->mineQuantity)) {
             return Response::deny("You can't store resources from the mine");
         }
+        return Response::allow();
+    }
+
+    public function buy(User $user) {
+        $mineCount = Auth::user()->mines->count();
+        if($mineCount === config("mine.max_nb_mine")) {
+            return Response::deny("You have already buy all mines");
+        }
+        Money::check(config("mine.price_for_new_mine")[$mineCount+1]);
         return Response::allow();
     }
 }

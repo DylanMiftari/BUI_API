@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(["auth:sanctum", "in_travel"])->prefix("/mine")->group(function() {
     Route::get("/", [MineController::class, "index"]);
+    Route::post("/buy", [MineController::class, "buyNewMine"]);
 
     Route::middleware(["check_mine_owner"])->prefix("/{mine}")->group(function() {
 
