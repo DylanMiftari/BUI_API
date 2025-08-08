@@ -69,7 +69,9 @@ The currently logged user
 {
     "id": "id of the user",
     "pseudo": "pseudo of the user",
-    "userMoney": "user money of the user", // if "userMoney" is present in with param
+    "userMoney": "user money of the user",
+    "companiesCount": "user's companies count",
+    "minesCount": "user's companies count",
     "companies": [ // if "company" is present in with param
         {
             "id": "id of the company",

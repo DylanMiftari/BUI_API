@@ -19,7 +19,7 @@ class With {
 
     public static function add(string $withToAdd) {
         if(!self::has($withToAdd)) {
-            request()->request->set("with", request()->input("with").",$withToAdd");
+            request()->query->set("with", request()->input("with").",$withToAdd");
         }
     }
 

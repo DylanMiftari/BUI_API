@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\With;
 use App\Http\Actions\Users\LoginAction;
 use App\Http\Actions\Users\RegisterAction;
 use App\Http\Requests\User\LoginRequest;
@@ -38,6 +39,8 @@ class AuthController extends Controller
 
     public function getUser()
     {
+        With::add("userMoney");
+        With::add("dashboard");
         return new UserResource(Auth::user());
     }
 

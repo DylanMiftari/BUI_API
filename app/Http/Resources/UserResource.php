@@ -21,6 +21,10 @@ class UserResource extends JsonResource
             "userMoney" => $this->when(With::securedHas("userMoney", $this->resource), $this->playerMoney),
             "companies" => $this->when(With::has("company"), CompanyResource::collection($this->companies)),
             "mines" => $this->when(With::has("mine"), MineResource::collection($this->mines)),
+            $this->mergeWhen(With::securedHas("dashboard", $this->resource), [
+                "companiesCount" => $this->companies->count(),
+                "minesCount" => $this->mines->count(),
+            ])
         ];
     }
 }
