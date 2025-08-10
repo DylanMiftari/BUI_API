@@ -23,21 +23,21 @@ class HouseTypeSeeder extends Seeder
             ],
             [
                 "id" => 2,
-                "typeName" => "Yourte",
+                "typeName" => "Yurt",
                 "constructionDuration" => 5,
                 "constructionCost" => 750,
                 "maintenanceCost" => 150
             ],
             [
                 "id" => 3,
-                "typeName" => "Appartement",
+                "typeName" => "Apartment",
                 "constructionDuration" => 15,
                 "constructionCost" => 50_000,
                 "maintenanceCost" => 3_000
             ],
             [
                 "id" => 4,
-                "typeName" => "Maison",
+                "typeName" => "House",
                 "constructionDuration" => 30,
                 "constructionCost" => 150_000,
                 "maintenanceCost" => 8_000

@@ -17,7 +17,7 @@ class ResourceTableSeeder extends Seeder
         DB::table("resource")->insert([
             [
                 "id" => 1,
-                "name" => "Terre",
+                "name" => "Dirt",
                 "marketPrice" => 0.25,
                 "levelToMine" => 1,
                 "timeToMine" => 60,
@@ -25,7 +25,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 2,
-                "name" => "Pierre",
+                "name" => "Stone",
                 "marketPrice" => 0.75,
                 "levelToMine" => 1,
                 "timeToMine" => 60,
@@ -33,7 +33,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 3,
-                "name" => "Sable",
+                "name" => "Sand",
                 "marketPrice" => 2.15,
                 "levelToMine" => 1,
                 "timeToMine" => 90,
@@ -41,7 +41,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 4,
-                "name" => "Gravier",
+                "name" => "Gravel",
                 "marketPrice" => 2.15,
                 "levelToMine" => 1,
                 "timeToMine" => 90,
@@ -49,7 +49,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 5,
-                "name" => "Bois",
+                "name" => "Wood",
                 "marketPrice" => 4,
                 "levelToMine" => 1,
                 "timeToMine" => 120,
@@ -57,7 +57,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 6,
-                "name" => "Eau",
+                "name" => "Water",
                 "marketPrice" => 0.15,
                 "levelToMine" => 1,
                 "timeToMine" => 30,
@@ -65,7 +65,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 7,
-                "name" => "Charbon",
+                "name" => "Coal",
                 "marketPrice" => 50,
                 "levelToMine" => 2,
                 "timeToMine" => 240,
@@ -73,7 +73,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 8,
-                "name" => "Fer",
+                "name" => "Iron",
                 "marketPrice" => 130,
                 "levelToMine" => 2,
                 "timeToMine" => 480,
@@ -81,7 +81,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 9,
-                "name" => "Marbre",
+                "name" => "Marble",
                 "marketPrice" => 90,
                 "levelToMine" => 2,
                 "timeToMine" => 600,
@@ -97,7 +97,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 11,
-                "name" => "Or",
+                "name" => "Gold",
                 "marketPrice" => 155,
                 "levelToMine" => 3,
                 "timeToMine" => 600,
@@ -105,7 +105,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 12,
-                "name" => "Diamant",
+                "name" => "Diamond",
                 "marketPrice" => 500,
                 "levelToMine" => 4,
                 "timeToMine" => 1200,
@@ -121,7 +121,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 14,
-                "name" => "Pétrole",
+                "name" => "Oil",
                 "marketPrice" => 320,
                 "levelToMine" => 3,
                 "timeToMine" => 480,
@@ -129,7 +129,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 15,
-                "name" => "Emeraude",
+                "name" => "Emerald",
                 "marketPrice" => 900,
                 "levelToMine" => 5,
                 "timeToMine" => 1800,
@@ -145,7 +145,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 17,
-                "name" => "Antimatière",
+                "name" => "Antimatter",
                 "marketPrice" => 2500000,
                 "levelToMine" => 6,
                 "timeToMine" => 14400,
@@ -153,7 +153,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 18,
-                "name" => "Verre",
+                "name" => "Glass",
                 "marketPrice" => 3,
                 "levelToMine" => null,
                 "timeToMine" => null,
@@ -161,7 +161,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 19,
-                "name" => "Plastique",
+                "name" => "Plastic",
                 "marketPrice" => 95,
                 "levelToMine" => null,
                 "timeToMine" => null,
@@ -169,7 +169,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 20,
-                "name" => "Acier",
+                "name" => "Steel",
                 "marketPrice" => 100,
                 "levelToMine" => null,
                 "timeToMine" => null,
@@ -177,7 +177,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 21,
-                "name" => "Gaz",
+                "name" => "Gas",
                 "marketPrice" => 12.5,
                 "levelToMine" => null,
                 "timeToMine" => null,
@@ -185,7 +185,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 22,
-                "name" => "Cuivre",
+                "name" => "Copper",
                 "marketPrice" => 40,
                 "levelToMine" => null,
                 "timeToMine" => null,
@@ -193,7 +193,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 23,
-                "name" => "Tissu",
+                "name" => "Fabric",
                 "marketPrice" => 1.5,
                 "levelToMine" => null,
                 "timeToMine" => null,
@@ -201,7 +201,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 24,
-                "name" => "Titane",
+                "name" => "Titanium",
                 "marketPrice" => 120,
                 "levelToMine" => null,
                 "timeToMine" => null,
@@ -209,7 +209,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 25,
-                "name" => "Béton",
+                "name" => "Concrete",
                 "marketPrice" => 2,
                 "levelToMine" => null,
                 "timeToMine" => null,
@@ -217,7 +217,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 26,
-                "name" => "Bois traité",
+                "name" => "Treated Wood",
                 "marketPrice" => 7,
                 "levelToMine" => null,
                 "timeToMine" => null,
@@ -225,7 +225,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 27,
-                "name" => "Lapis-Lazuli",
+                "name" => "Lapis Lazuli",
                 "marketPrice" => 450,
                 "levelToMine" => null,
                 "timeToMine" => null,
@@ -249,7 +249,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 30,
-                "name" => "Béton armé",
+                "name" => "Reinforced Concrete",
                 "marketPrice" => 65,
                 "levelToMine" => null,
                 "timeToMine" => null,
@@ -257,7 +257,7 @@ class ResourceTableSeeder extends Seeder
             ],
             [
                 "id" => 31,
-                "name" => "Anti-atome stable",
+                "name" => "Stable Anti-atom",
                 "marketPrice" => 3500000,
                 "levelToMine" => null,
                 "timeToMine" => null,
