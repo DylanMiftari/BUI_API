@@ -18,7 +18,9 @@ class ResourceResource extends JsonResource
         return [
             "id" => $this->id,
             "name" => $this->name,
-            "price" => $this->when(With::has("price"), $this->marketPrice)
+            "price" => $this->when(With::has("price"), $this->marketPrice),
+            "timeToMine" => $this->timeToMine,
+            "mineQuantity" => $this->mineQuantity
         ];
     }
 }
