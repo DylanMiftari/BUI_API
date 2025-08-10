@@ -17,6 +17,15 @@ class Mine extends Model
         "startedAt" => "datetime"
     ];
 
+    public function getHourlyIncome() {
+        if($this->currentTargetResourceId === null) {
+            return 0;
+        }
+        $resource = $this->resource;
+        $totalPrice = $resource->marketPrice * 10 * $resource->mineQuantity;
+        return round($totalPrice / ($resource->timeToMine / 60), 2);
+    }
+
     public function resource(): HasOne {
         return $this->hasOne(Resource::class, "id", "currentTargetResourceId");
     }

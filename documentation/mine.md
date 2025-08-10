@@ -18,7 +18,8 @@ This route return all user's mines
         "resource": {
             "id": "current mining resource id",
             "name": "current mining resource name"
-        }
+        },
+        "hourlyIncome": "hourly income of the mine" // if "hourlyIncome" is present in with param
     }
     ...
 ]

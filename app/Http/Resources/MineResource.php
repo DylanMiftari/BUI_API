@@ -19,7 +19,8 @@ class MineResource extends JsonResource
             "id" => $this->id,
             "level" => $this->level,
             "startedAt" => $this->startedAt,
-            "resource" => $this->when(With::has("resource"), new ResourceResource($this->resource->resource))
+            "resource" => $this->when(With::has("resource"), new ResourceResource($this->resource->resource)),
+            "hourlyIncome" => $this->when(With::has("hourlyIncome"), $this->getHourlyIncome())
         ];
     }
 }
