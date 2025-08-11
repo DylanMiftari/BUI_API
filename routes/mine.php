@@ -8,6 +8,7 @@ Route::middleware(["auth:sanctum", "in_travel"])->prefix("/mine")->group(functio
     Route::post("/buy", [MineController::class, "buyNewMine"]);
 
     Route::middleware(["check_mine_owner"])->prefix("/{mine}")->group(function() {
+        Route::get("/", [MineController::class, "show"]);
 
         Route::middleware(["mine_not_processing"])->group(function() {
             Route::patch("/upgrade", [MineController::class, "upgrade"]);

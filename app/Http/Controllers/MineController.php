@@ -25,6 +25,11 @@ class MineController extends Controller
         return MineResource::collection(Auth::user()->mines);
     }
 
+    public function show(Mine $mine) {
+        With::add("resource");
+        return new MineResource($mine);
+    }
+
     public function upgrade(Mine $mine, UpgradeMineAction $action) {
         $this->authorize("upgrade", $mine);
 

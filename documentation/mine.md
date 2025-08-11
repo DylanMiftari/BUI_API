@@ -6,7 +6,30 @@ This route return all user's mines
 **Route :** /  
 **Query params :**
 - with=value1,value2...
-- mineable_at=[1-6] : Get resources mineable with a specific mine level
+
+**Return :**  
+```json
+[
+    {
+        "id": "id de la mine",
+        "level": "mine level",
+        "startedAt": "the beginning of the mining",
+        "resource": {
+            "id": "current mining resource id",
+            "name": "current mining resource name"
+        },
+        "hourlyIncome": "hourly income of the mine" // if "hourlyIncome" is present in with param
+    }
+    ...
+]
+```
+---
+### Get data of a specific mine
+This route return a specific user's mine  
+**Method :** GET  
+**Route :** /{mine_id}  
+**Query params :**
+- with=value1,value2...mine level
 
 **Return :**  
 ```json
