@@ -42,7 +42,11 @@ This route return a specific user's mine
             "id": "current mining resource id",
             "name": "current mining resource name"
         },
-        "hourlyIncome": "hourly income of the mine" // if "hourlyIncome" is present in with param
+        "hourlyIncome": "hourly income of the mine", // if "hourlyIncome" is present in with param
+        "mineLevel": { // if "level" is present in with param
+            "level": "mine level",
+            "priceForNextLevel": "price to upgrade mine"
+        }
     }
     ...
 ]
