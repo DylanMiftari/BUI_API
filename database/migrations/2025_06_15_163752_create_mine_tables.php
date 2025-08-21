@@ -11,10 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('minelevel', function (Blueprint $table) {
-            $table->unsignedTinyInteger("level")->primary();
-            $table->unsignedInteger("priceForNextLevel")->nullable();
-        });
+
 
         Schema::create('mine', function (Blueprint $table) {
             $table->id();
@@ -35,6 +32,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('mine');
-        Schema::dropIfExists('minelevel');
     }
 };

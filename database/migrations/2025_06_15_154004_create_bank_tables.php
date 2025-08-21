@@ -43,7 +43,7 @@ return new class extends Migration
             $table->foreign("bankId")->references("id")->on("bank")->restrictOnDelete()->restrictOnUpdate();
 
             $table->unsignedBigInteger("userId");
-            $table->foreign("userId")->references("id")->on("user")->restrictOnDelete()->restrictOnUpdate();
+            $table->foreign("userId")->references("id")->on("users")->restrictOnDelete()->restrictOnUpdate();
 
             $table->boolean("isEnable")->default(true);
 
@@ -61,7 +61,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger("userId");
             $table->foreign("userId")->references('id')->on("users")->restrictOnDelete()->restrictOnUpdate();
-            
+
             $table->unsignedBigInteger("bankId");
             $table->foreign("bankId")->references("id")->on("bank")->restrictOnDelete()->restrictOnUpdate();
 

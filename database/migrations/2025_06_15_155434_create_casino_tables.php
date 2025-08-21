@@ -204,8 +204,8 @@ return new class extends Migration
             $table->unsignedBigInteger("casinoId");
             $table->foreign("casinoId")->references("id")->on("casino")->cascadeOnDelete()->restrictOnUpdate();
 
-            $table->unsignedBigInteger("playerId")->nullable();
-            $table->foreign("playerId")->references("id")->on("player")->nullOnDelete()->cascadeOnUpdate();
+            $table->unsignedBigInteger("userId")->nullable();
+            $table->foreign("userId")->references("id")->on("users")->nullOnDelete()->cascadeOnUpdate();
 
             $table->timestamps();
         });
@@ -217,8 +217,8 @@ return new class extends Migration
             $table->unsignedBigInteger("casinoId");
             $table->foreign("casinoId")->references("id")->on("casino")->restrictOnDelete()->restrictOnUpdate();
 
-            $table->unsignedBigInteger("playerId")->nullable();
-            $table->foreign("playerId")->references("id")->on("player")->nullOnDelete()->restrictOnUpdate();
+            $table->unsignedBigInteger("userId")->nullable();
+            $table->foreign("userId")->references("id")->on("users")->nullOnDelete()->restrictOnUpdate();
 
             $table->timestamps();
         });

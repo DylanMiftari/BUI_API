@@ -11,6 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('minelevel', function (Blueprint $table) {
+            $table->unsignedTinyInteger("level")->primary();
+            $table->unsignedInteger("priceForNextLevel")->nullable();
+        });
+
         Schema::create('resource', function (Blueprint $table) {
             $table->unsignedBigInteger("id")->primary();
             $table->string("name", length: 50);
@@ -61,5 +66,6 @@ return new class extends Migration
         Schema::dropIfExists('recipe');
         Schema::dropIfExists('userresource');
         Schema::dropIfExists('resource');
+        Schema::dropIfExists('minelevel');
     }
 };
