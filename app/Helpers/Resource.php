@@ -30,4 +30,15 @@ class Resource {
         }
     }
 
+    public static function remove(ModelsResource $resource, float $quantity) {
+        $user = Auth::user();
+        $userResource = $user->userResources()->where("resourceId", $resource->id)->first();
+        $userResource->quantity = round($userResource->quantity - $quantity, 2);
+        if((float)$userResource->quantity === 0.0) {
+            $userResource->delete();
+        } else {
+            $userResource->save();
+        }
+    }
+
 }

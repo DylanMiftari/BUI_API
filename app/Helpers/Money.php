@@ -39,4 +39,17 @@ class Money {
         $user->save();
     }
 
+    public static function creditMoney(float $money) {
+        $user = User::find(Auth::id());
+        $user->playerMoney = round($user->playerMoney + $money, 2);
+        $user->save();
+    }
+
+    public static function canStore(float $money) {
+        $user = User::find(Auth::id());
+        if((float)$user->playerMoney + $money >= (float)config("user.max_player_money")) {
+            throw new AuthorizationException("You can't store this money : $money");
+        }
+    }
+
 }
