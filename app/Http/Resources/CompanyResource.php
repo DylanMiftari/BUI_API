@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Helpers\With;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,7 +19,9 @@ class CompanyResource extends JsonResource
             "id" => $this->id,
             "name" => $this->name,
             "type" => $this->companyType,
-            "activated" => $this->activated
+            "activated" => $this->activated,
+            "level" => $this->companyLevel,
+            "owner_name" => $this->when(With::has("ownerName"), $this->user->pseudo)
         ];
     }
 }
