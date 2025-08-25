@@ -18,9 +18,9 @@ class CityResource extends JsonResource
             "id" => $this->id,
             "name" => $this->name,
             "country" => $this->country,
-            "max_level_of_corp" => $this->maxLevelOfCorp,
-            "weekly_taxes" => $this->weeklyTaxes,
-            "weekly_company_taxes" => $this->weeklyCompanyTaxes,
+            "maxLevelOfCorp" => $this->maxLevelOfCorp,
+            "weeklyTaxes" => $this->weeklyTaxes,
+            "weeklyCompanyTaxes" => $this->weeklyCompanyTaxes,
             "rank" => $this->rank
         ];
     }

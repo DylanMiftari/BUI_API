@@ -24,7 +24,8 @@ class UserResource extends JsonResource
             $this->mergeWhen(With::securedHas("dashboard", $this->resource), [
                 "companiesCount" => $this->companies->count(),
                 "minesCount" => $this->mines->count(),
-                "resourceSum" => $this->userResources->sum("quantity")
+                "resourceSum" => $this->userResources->sum("quantity"),
+                "cityName" => $this->city->name,
             ])
         ];
     }

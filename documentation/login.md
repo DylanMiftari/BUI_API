@@ -72,6 +72,7 @@ The currently logged user
     "userMoney": "user money of the user",
     "companiesCount": "user's companies count",
     "minesCount": "user's companies count",
+    "cityName": "user's city name",
     "companies": [ // if "company" is present in with param
         {
             "id": "id of the company",

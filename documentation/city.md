@@ -10,9 +10,9 @@ This route return all data about the city of the user
     "id": "id of the city",
     "name": "name of the city",
     "country": "country of the city",
-    "max_level_of_corp": "max level of companies in the city",
-    "weekly_taxes": "weekly taxes in the city",
-    "weekly_company_taxes": "weekly company taxes in the city",
+    "maxLevelOfCorp": "max level of companies in the city",
+    "weeklyTaxes": "weekly taxes in the city",
+    "weeklyCompanyTaxes": "weekly company taxes in the city",
     "rank": "rank of the city"
 }
 ```
