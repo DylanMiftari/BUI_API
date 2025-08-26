@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Services;
 
@@ -47,10 +47,10 @@ class CompanyService {
                 case "security":
                     $security = new SecurityCompany(["companyId" => $company->id]);
                     $security->save();
-                    break;    
+                    break;
             }
 
-            return $company;
+            return Company::find($company->id);
         });
 
         return $company;
