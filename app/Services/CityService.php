@@ -7,7 +7,7 @@ use App\Models\City;
 class CityService {
 
     public function getCompaniesOfCity(City $city, string|null $name = null, string|null $type = null, string|null $level = null) {
-        $query = $city->companies();
+        $query = $city->companies()->where("activated", true);
         if($name) {
             $query->whereLike("name", "%$name%");
         }
