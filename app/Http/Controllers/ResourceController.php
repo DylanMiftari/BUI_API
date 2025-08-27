@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Money;
+use App\Helpers\With;
 use App\Http\Actions\Resource\SellResourceAction;
 use App\Http\Requests\Resource\ResourceIndexRequest;
 use App\Http\Requests\Resource\SellResourceRequest;
 use App\Http\Resources\ResourceResource;
+use App\Http\Resources\UserResourceResource;
 use App\Models\Resource;
 use App\Services\ResourceService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ResourceController extends Controller
 {
@@ -26,8 +29,14 @@ class ResourceController extends Controller
         return ResourceResource::collection($query->get());
     }
 
+    public function playerResources() {
+        $user = Auth::user();
+        With::add("price");
+        return UserResourceResource::collection($user->userResources()->with("resource")->get());
+    }
+
     /**
-     * We will only sell the resources that the user has. For example, if the user wants to sell 
+     * We will only sell the resources that the user has. For example, if the user wants to sell
      * 2 kg of stones but only has 1 kg, we will sell 1 kg of stones and not 2 kg.
      */
     public function sell(SellResourceRequest $request, SellResourceAction $action) {
