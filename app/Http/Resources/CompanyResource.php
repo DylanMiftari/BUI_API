@@ -21,6 +21,7 @@ class CompanyResource extends JsonResource
             "type" => $this->companyType,
             "activated" => $this->activated,
             "level" => $this->companyLevel,
+            "moneyInSafe" => $this->when(With::securedHas("money", $this->user), $this->moneyInSafe),
             "owner_name" => $this->when(With::has("ownerName"), $this->user->pseudo)
         ];
     }
