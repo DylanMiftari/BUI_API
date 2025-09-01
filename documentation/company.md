@@ -40,3 +40,24 @@ The created company
 }
 ```
 ---
+### Upgrade a company
+This route upgrade a company  
+**Method :** PATCH  
+**Route :** /  
+**Payload :**
+```json
+{
+    "name": "required | not empty | max length : 100",
+    "type": "required | in : bank, casino, mafia, estate, factory, security"
+}
+```
+**Return :**  
+The created company
+```json
+{
+    "id": "id of the company",
+    "name": "name of the company",
+    "type": "type of the company",
+}
+```
+---

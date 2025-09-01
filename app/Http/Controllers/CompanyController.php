@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\With;
 use App\Http\Actions\Company\CreateCompanyAction;
+use App\Http\Actions\Company\UpgradeCompanyAction;
 use App\Http\Requests\Company\CreateCompanyRequest;
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
@@ -25,5 +26,15 @@ class CompanyController extends Controller
         $company = $action->handle(Auth::user(), $request->input("name"), $request->input("type"));
 
         return new CompanyResource($company);
+    }
+
+    public function upgrade(Company $company, UpgradeCompanyAction $action) {
+        $this->authorize("upgrade", $company);
+
+        $action->handle($company);
+
+        return response()->json([
+            "result" => true,
+        ]);
     }
 }

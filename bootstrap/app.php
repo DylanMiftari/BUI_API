@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\Company\CheckCompanyOwernshipMiddleware;
 use App\Http\Middleware\InTravelMiddleware;
 use App\Http\Middleware\Mine\CheckMineOwnerMiddleware;
 use App\Http\Middleware\mine\MineNotProcessingMiddleware;
@@ -27,6 +28,7 @@ return Application::configure(basePath: dirname(__DIR__))
             "check_mine_owner" => CheckMineOwnerMiddleware::class,
             "mine_not_processing" => MineNotProcessingMiddleware::class,
             "mine_processing" => MineProcessingMiddleware::class,
+            "company_ownership" => CheckCompanyOwernshipMiddleware::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
