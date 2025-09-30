@@ -3,7 +3,7 @@
 use App\Http\Middleware\Company\CheckCompanyOwernshipMiddleware;
 use App\Http\Middleware\InTravelMiddleware;
 use App\Http\Middleware\Mine\CheckMineOwnerMiddleware;
-use App\Http\Middleware\mine\MineNotProcessingMiddleware;
+use App\Http\Middleware\Mine\MineNotProcessingMiddleware;
 use App\Http\Middleware\Mine\MineProcessingMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
