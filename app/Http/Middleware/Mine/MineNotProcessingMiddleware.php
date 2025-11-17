@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware\mine;
+namespace App\Http\Middleware\Mine;
 
 use App\Exceptions\Mine\MineIsInProcessingException;
 use Closure;
