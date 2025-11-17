@@ -78,4 +78,8 @@ class User extends Authenticatable
     public function resourceQuantity(): float {
         return UserResource::where("userId", $this->id)->sum("quantity");
     }
+
+    public function casinoTickets(): HasMany {
+        return $this->hasMany(CasinoTicket::class, "userId", "id");
+    }
 }
