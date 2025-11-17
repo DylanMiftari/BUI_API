@@ -75,3 +75,28 @@ This route launch a game roulette
     "roll": "the result (e.g. 513)"
 }
 ```
+---
+
+## Play at dice
+This route launch a game dice  
+**Method :** POST  
+**Route :** /{casino}/game/dice  
+**Payload :**
+```json
+{
+    "bet": "the user bet"
+}
+```
+**Return :**
+```json
+{
+    "bet": "the user bet",
+    "winnings": "the user winnings",
+    "roll": [
+        "result of dice 1",
+        "result of dice 2"
+    ],
+    "sum": "sum of two dices"
+}
+```
+---

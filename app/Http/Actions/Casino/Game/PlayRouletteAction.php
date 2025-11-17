@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Actions\Casino;
+namespace App\Http\Actions\Casino\Game;
 
+use App\Http\Actions\Casino\PlayGameAction;
 use App\Models\Casino;
 use App\Models\User;
 use App\Services\CasinoGame\CasinoRouletteService;

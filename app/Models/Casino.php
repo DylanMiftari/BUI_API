@@ -22,6 +22,8 @@ class Casino extends Model
         switch ($game) {
             case "roulette":
                 return $isVIP ? $this->rouletteMaxVIPBet : $this->rouletteMaxBet;
+            case "dice":
+                return $isVIP ? $this->diceVIPMaxBet : $this->diceMaxBet;
         }
         return 0;
     }
