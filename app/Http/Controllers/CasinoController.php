@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Actions\Casino\BuyTicketAction;
+use App\Http\Actions\Casino\PlayRouletteAction;
+use App\Http\Requests\Casino\BasicGameRequest;
 use App\Http\Requests\Casino\BuyTicketRequest;
 use App\Http\Resources\CasinoTicketResource;
 use App\Models\Casino;
@@ -32,5 +34,17 @@ class CasinoController extends Controller
         $ticket = $action->handle(Auth::user(), $casino, $request->input("isVIP"));
 
         return new CasinoTicketResource($ticket);
+    }
+
+    public function playRoulette(BasicGameRequest $request, Casino $casino, PlayRouletteAction $action)
+    {
+        request()->attributes->add(["game" => "roulette"]);
+
+        $this->authorize("playGame", $casino);
+
+        $res = $action->handle(Auth::user(), $casino, "roulette", $request->input("bet"),
+            request()->attributes->get('isVIP'));
+
+        return $res;
     }
 }

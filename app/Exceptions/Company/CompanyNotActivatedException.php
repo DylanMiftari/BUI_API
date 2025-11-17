@@ -9,6 +9,6 @@ class CompanyNotActivatedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct("You are not the owner of this company");
+        parent::__construct("This company is not activated.");
     }
 }

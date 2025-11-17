@@ -21,4 +21,20 @@ class CasinoPolicy
         }
         return Response::allow();
     }
+
+    public function playGame(User $user, Casino $casino) {
+        $bet = request()->input("bet");
+        Money::check($bet);
+
+        $ticket = $this->casinoService->getUserTicketForCasino($user, $casino);
+        $isVIP = $ticket->isVIP;
+        $game = request()->attributes->get('game');
+        request()->attributes->set('isVIP', $isVIP);
+
+        if($bet > $casino->getMaxBetForGame($game, $isVIP)) {
+            return Response::deny("You can't play more than $bet");
+        }
+
+        return Response::allow();
+    }
 }

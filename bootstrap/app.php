@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Middleware\Casino\CasinoIsActivated;
+use App\Http\Middleware\Casino\CheckTicketMiddleware;
+use App\Http\Middleware\Company\CheckCompanyLevelMiddleware;
 use App\Http\Middleware\Company\CheckCompanyOwernshipMiddleware;
 use App\Http\Middleware\InTravelMiddleware;
 use App\Http\Middleware\Mine\CheckMineOwnerMiddleware;
@@ -31,7 +33,9 @@ return Application::configure(basePath: dirname(__DIR__))
             "mine_not_processing" => MineNotProcessingMiddleware::class,
             "mine_processing" => MineProcessingMiddleware::class,
             "company_ownership" => CheckCompanyOwernshipMiddleware::class,
-            "casino_activated" => CasinoIsActivated::class
+            "casino_activated" => CasinoIsActivated::class,
+            "check_company_level" => CheckCompanyLevelMiddleware::class,
+            "check_casino_ticket" => CheckTicketMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

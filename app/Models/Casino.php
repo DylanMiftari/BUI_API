@@ -17,4 +17,12 @@ class Casino extends Model
     public function company(): HasOne {
         return $this->hasOne(Company::class, 'id', 'companyId');
     }
+
+    public function getMaxBetForGame(string $game, bool $isVIP = false): float {
+        switch ($game) {
+            case "roulette":
+                return $isVIP ? $this->rouletteMaxVIPBet : $this->rouletteMaxBet;
+        }
+        return 0;
+    }
 }

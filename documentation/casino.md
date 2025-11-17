@@ -55,3 +55,23 @@ This route buy a ticket for a user
     }
 }
 ```
+---
+
+## Play at roulette
+This route launch a game roulette  
+**Method :** POST  
+**Route :** /{casino}/game/roulette  
+**Payload :**
+```json
+{
+    "bet": "the user bet"
+}
+```
+**Return :**
+```json
+{
+    "bet": "the user bet",
+    "winnings": "the user winnings",
+    "roll": "the result (e.g. 513)"
+}
+```
