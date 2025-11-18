@@ -127,16 +127,16 @@ return new class extends Migration
             $table->unsignedInteger("pokerNbFreeParty")->default(5);
 
             // Black Jack (level 4+)
-            $table->float("blackJackWinMultiplicator")->default(1);
-            $table->float("blackJackMultiplicator")->default(1.5);
+            $table->float("blackJackWinMultiplicator")->default(2);
+            $table->float("blackJackMultiplicator")->default(3);
             $table->unsignedBigInteger("blackJackMaxBet")->default(10_000);
 
-            $table->float("blackJackVIPWinMultiplicator")->default(1);
-            $table->float("blackJackVIPMultiplicator")->default(1.5);
+            $table->float("blackJackVIPWinMultiplicator")->default(2);
+            $table->float("blackJackVIPMultiplicator")->default(5);
             $table->unsignedBigInteger("blackJackVIPMaxBet")->default(60_000);
 
-            $table->float("blackJackUltraVIPWinMultiplicator")->default(1);
-            $table->float("blackJackUltraVIPMultiplicator")->default(1.5);
+            $table->float("blackJackUltraVIPWinMultiplicator")->default(2);
+            $table->float("blackJackUltraVIPMultiplicator")->default(6);
             $table->unsignedBigInteger("blackJackUltraVIPMaxBet")->default(150_000);
             $table->unsignedInteger("blackJackNbFreeParty")->default(5);
 
