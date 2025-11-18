@@ -100,3 +100,29 @@ This route launch a game dice
 }
 ```
 ---
+
+## Play at poker
+This route launch a game poker  
+**Method :** POST  
+**Route :** /{casino}/game/poker  
+**Payload :**
+```json
+{
+    "bet": 100
+}
+```
+**Return :**
+```json
+{
+    "bet": "the user bet",
+    "winnings": "the user winnings",
+    "hand": "the hand of the user",
+    "cards": [
+        {
+            "color": "color of the first card",
+            "value": "value of the first card"
+        },
+        ...
+    ]
+}
+```

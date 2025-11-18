@@ -11,6 +11,7 @@ Route::prefix('/casino')->middleware("auth:sanctum")->group(function(){
         Route::prefix("/game")->middleware("check_casino_ticket")->group(function(){
             Route::post("/roulette", [CasinoController::class, "playRoulette"])->middleware("check_company_level:1");
             Route::post("/dice", [CasinoController::class, "playDice"])->middleware("check_company_level:2");
+            Route::post("/poker", [CasinoController::class, "playPoker"])->middleware("check_company_level:3");
         });
     });
 });
