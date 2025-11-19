@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Helpers\Money;
+use App\Models\BlackjackParty;
 use App\Models\Casino;
 use App\Models\User;
 use App\Services\CasinoService;
@@ -34,6 +35,15 @@ class CasinoPolicy
         if($bet > $casino->getMaxBetForGame($game, $isVIP)) {
             return Response::deny("You can't play more than $bet");
         }
+
+        return Response::allow();
+    }
+
+    public function finishBlackjack(User $user, Casino $casino) {
+        $blackjackParty = BlackjackParty::where("userId", $user->id)
+            ->where("casinoId", $casino->id)->first();
+
+        Money::check($blackjackParty->bet);
 
         return Response::allow();
     }

@@ -17,6 +17,7 @@ Route::prefix('/casino')->middleware("auth:sanctum")->group(function(){
                 Route::post("/init", [CasinoController::class, "initBlackjack"]);
                 Route::prefix("/{blackjack_party}")->middleware("check_blackjack_part_owner")->group(function(){
                     Route::patch("/hit", [CasinoController::class, "hitBlackjack"]);
+                    Route::patch("/finish", [CasinoController::class, "finishBlackjack"]);
                 });
             });
         });

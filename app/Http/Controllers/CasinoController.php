@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Actions\Casino\BuyTicketAction;
 use App\Http\Actions\Casino\Game\CreateBlackjackPartyAction;
+use App\Http\Actions\Casino\Game\FinishBlackjackPartyAction;
 use App\Http\Actions\Casino\Game\HitBlackjackAction;
 use App\Http\Actions\Casino\Game\PlayDiceAction;
 use App\Http\Actions\Casino\Game\PlayPokerAction;
@@ -91,9 +92,21 @@ class CasinoController extends Controller
 
     public function hitBlackjack(Casino $casino, BlackjackParty $blackjack_party, HitBlackjackAction $action)
     {
+        $this->authorize("finishBlackjack", $casino);
         $blackjackParty = $action->handle($blackjack_party);
 
         return new BlackjackPartyResource($blackjackParty);
+    }
+
+    public function finishBlackjack(Casino $casino, BlackjackParty $blackjack_party, FinishBlackjackPartyAction $action)
+    {
+        $this->authorize("finishBlackjack", $casino);
+
+        $ticket = $this->casinoService->getUserTicketForCasino(Auth::user(), $casino);
+        $isVIP = $ticket->isVIP;
+
+        $res = $action->handle($blackjack_party, $isVIP);
+        return $res;
     }
 
 }
