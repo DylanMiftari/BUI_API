@@ -127,15 +127,15 @@ return new class extends Migration
             $table->unsignedInteger("pokerNbFreeParty")->default(5);
 
             // Black Jack (level 4+)
-            $table->float("blackJackWinMultiplicator")->default(2);
+            $table->float("blackJackWinMultiplicator")->default(1.5);
             $table->float("blackJackMultiplicator")->default(3);
             $table->unsignedBigInteger("blackJackMaxBet")->default(10_000);
 
-            $table->float("blackJackVIPWinMultiplicator")->default(2);
+            $table->float("blackJackVIPWinMultiplicator")->default(1.5);
             $table->float("blackJackVIPMultiplicator")->default(5);
             $table->unsignedBigInteger("blackJackVIPMaxBet")->default(60_000);
 
-            $table->float("blackJackUltraVIPWinMultiplicator")->default(2);
+            $table->float("blackJackUltraVIPWinMultiplicator")->default(1.5);
             $table->float("blackJackUltraVIPMultiplicator")->default(6);
             $table->unsignedBigInteger("blackJackUltraVIPMaxBet")->default(150_000);
             $table->unsignedInteger("blackJackNbFreeParty")->default(5);
@@ -148,9 +148,9 @@ return new class extends Migration
             $table->float("roulette2SixLineMultiplicator")->default(5);
             $table->float("roulette2ColumnMultiplicator")->default(2);
             $table->float("roulette2DozenMultiplicator")->default(2);
-            $table->float("roulette2OddEvenMultiplicator")->default(1);
-            $table->float("roulette2RedBlackMultiplicator")->default(1);
-            $table->float("roulette2MiddleMultiplicator")->default(1); // For 1-18 or 19-36 bet
+            $table->float("roulette2OddEvenMultiplicator")->default(1.25);
+            $table->float("roulette2RedBlackMultiplicator")->default(1.25);
+            $table->float("roulette2MiddleMultiplicator")->default(1.25); // For 1-18 or 19-36 bet
             $table->unsignedBigInteger("roulette2MaxBet")->default(40_000);
 
             $table->float("roulette2VIPStraigthUpMultiplicator")->default(35);
@@ -160,9 +160,9 @@ return new class extends Migration
             $table->float("roulette2VIPSixLineMultiplicator")->default(5);
             $table->float("roulette2VIPColumnMultiplicator")->default(2);
             $table->float("roulette2VIPDozenMultiplicator")->default(2);
-            $table->float("roulette2VIPOddEvenMultiplicator")->default(1);
-            $table->float("roulette2VIPRedBlackMultiplicator")->default(1);
-            $table->float("roulette2VIPMiddleMultiplicator")->default(1); // For 1-18 or 19-36 bet
+            $table->float("roulette2VIPOddEvenMultiplicator")->default(1.25);
+            $table->float("roulette2VIPRedBlackMultiplicator")->default(1.25);
+            $table->float("roulette2VIPMiddleMultiplicator")->default(1.25); // For 1-18 or 19-36 bet
             $table->unsignedBigInteger("roulette2VIPMaxBet")->default(140_000);
 
             $table->float("roulette2UltraVIPStraigthUpMultiplicator")->default(35);
@@ -172,9 +172,9 @@ return new class extends Migration
             $table->float("roulette2UltraVIPSixLineMultiplicator")->default(5);
             $table->float("roulette2UltraVIPColumnMultiplicator")->default(2);
             $table->float("roulette2UltraVIPDozenMultiplicator")->default(2);
-            $table->float("roulette2UltraVIPOddEvenMultiplicator")->default(1);
-            $table->float("roulette2UltraVIPRedBlackMultiplicator")->default(1);
-            $table->float("roulette2UltraVIPMiddleMultiplicator")->default(1); // For 1-18 or 19-36 bet
+            $table->float("roulette2UltraVIPOddEvenMultiplicator")->default(1.5);
+            $table->float("roulette2UltraVIPRedBlackMultiplicator")->default(1.5);
+            $table->float("roulette2UltraVIPMiddleMultiplicator")->default(1.5); // For 1-18 or 19-36 bet
             $table->unsignedBigInteger("roulette2UltraVIPMaxBet")->default(500_000);
             $table->unsignedInteger("roulette2NbFreeParty")->default(5);
 
