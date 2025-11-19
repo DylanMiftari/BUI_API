@@ -12,6 +12,10 @@ Route::prefix('/casino')->middleware("auth:sanctum")->group(function(){
             Route::post("/roulette", [CasinoController::class, "playRoulette"])->middleware("check_company_level:1");
             Route::post("/dice", [CasinoController::class, "playDice"])->middleware("check_company_level:2");
             Route::post("/poker", [CasinoController::class, "playPoker"])->middleware("check_company_level:3");
+
+            Route::prefix("/blackjack")->middleware("check_company_level:4")->group(function(){
+                Route::post("/init", [CasinoController::class, "initBlackjack"]);
+            });
         });
     });
 });

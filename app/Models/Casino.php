@@ -26,6 +26,10 @@ class Casino extends Model
                 return $isVIP ? $this->diceVIPMaxBet : $this->diceMaxBet;
             case "poker":
                 return $isVIP ? $this->pokerMaxVIPBet : $this->pokerMaxBet;
+            case "blackjack":
+                return $isVIP ? $this->blackJackVIPMaxBet : $this->blackJackMaxBet;
+            case "roulette2":
+                return $isVIP ? $this->roulette2VIPMaxBet : $this->roulette2MaxBet;
         }
         return 0;
     }

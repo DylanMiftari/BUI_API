@@ -126,3 +126,38 @@ This route launch a game poker
     ]
 }
 ```
+---
+
+## Create blackjack party
+This route create a blackjack party  
+**Method :** POST  
+**Route :** /{casino}/game/blackjack/init  
+**Payload :**
+```json
+{
+    "bet": 100
+}
+```
+**Return :**
+```json
+{
+    "id": "id of the party",
+    "userHand": [
+        {
+            "color": "color of the first card",
+            "value": "value of the first card"
+        },
+        {
+            "color": "color of the second card",
+            "value": "value of the second card"
+        }
+    ],
+    "bankHand": [
+        {
+            "color": "color of the first card",
+            "value": "value of the first card"
+        }
+    ],
+    "bet": "bet of the user"
+}
+```

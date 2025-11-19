@@ -26,4 +26,8 @@ class Card
             "value" => $this->value
         ];
     }
+
+    public static function createFromArray(array $cardArray): Card {
+        return new Card($cardArray['color'], $cardArray['value']);
+    }
 }

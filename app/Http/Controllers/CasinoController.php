@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Actions\Casino\BuyTicketAction;
+use App\Http\Actions\Casino\Game\CreateBlackjackPartyAction;
 use App\Http\Actions\Casino\Game\PlayDiceAction;
 use App\Http\Actions\Casino\Game\PlayPokerAction;
 use App\Http\Actions\Casino\Game\PlayRouletteAction;
 use App\Http\Requests\Casino\BasicGameRequest;
 use App\Http\Requests\Casino\BuyTicketRequest;
+use App\Http\Resources\BlackjackPartyResource;
 use App\Http\Resources\CasinoTicketResource;
 use App\Models\Casino;
 use App\Services\CasinoService;
@@ -70,5 +72,18 @@ class CasinoController extends Controller
             request()->attributes->get('isVIP'));
 
         return $res;
+    }
+
+    public function initBlackjack(BasicGameRequest $request, Casino $casino, CreateBlackjackPartyAction $action)
+    {
+        request()->attributes->add(["game" => "blackjack"]);
+        $this->authorize("playGame", $casino);
+
+        $blackjackParty = Auth::user()->blackjackPartyForCasino($casino);
+        if($blackjackParty == null){
+            $blackjackParty = $action->handle(Auth::user(), $casino, $request->input("bet"));
+        }
+
+        return new BlackjackPartyResource($blackjackParty);
     }
 }

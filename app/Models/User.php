@@ -82,4 +82,14 @@ class User extends Authenticatable
     public function casinoTickets(): HasMany {
         return $this->hasMany(CasinoTicket::class, "userId", "id");
     }
+
+    public function blackjackParties(): HasMany {
+        return $this->hasMany(BlackjackParty::class, "userId", "id");
+    }
+
+
+
+    public function blackjackPartyForCasino(Casino $casino): BlackjackParty|null {
+        return $this->blackjackParties()->where("casinoId", $casino->id)->first();
+    }
 }
