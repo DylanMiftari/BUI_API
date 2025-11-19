@@ -161,3 +161,29 @@ This route create a blackjack party
     "bet": "bet of the user"
 }
 ```
+---
+
+## Hit card in blackjack party
+This route create a blackjack party  
+**Method :** PATCH  
+**Route :** /{casino}/game/blackjack/{blackjack_party}/hit
+**Return :**
+```json
+{
+    "id": "id of the party",
+    "userHand": [
+        {
+            "color": "color of the card",
+            "value": "value of the card"
+        },
+        ...
+    ],
+    "bankHand": [
+        {
+            "color": "color of the first card",
+            "value": "value of the first card"
+        }
+    ],
+    "bet": "bet of the user"
+}
+```

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Actions\Casino\BuyTicketAction;
 use App\Http\Actions\Casino\Game\CreateBlackjackPartyAction;
+use App\Http\Actions\Casino\Game\HitBlackjackAction;
 use App\Http\Actions\Casino\Game\PlayDiceAction;
 use App\Http\Actions\Casino\Game\PlayPokerAction;
 use App\Http\Actions\Casino\Game\PlayRouletteAction;
@@ -11,6 +12,7 @@ use App\Http\Requests\Casino\BasicGameRequest;
 use App\Http\Requests\Casino\BuyTicketRequest;
 use App\Http\Resources\BlackjackPartyResource;
 use App\Http\Resources\CasinoTicketResource;
+use App\Models\BlackjackParty;
 use App\Models\Casino;
 use App\Services\CasinoService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -86,4 +88,12 @@ class CasinoController extends Controller
 
         return new BlackjackPartyResource($blackjackParty);
     }
+
+    public function hitBlackjack(Casino $casino, BlackjackParty $blackjack_party, HitBlackjackAction $action)
+    {
+        $blackjackParty = $action->handle($blackjack_party);
+
+        return new BlackjackPartyResource($blackjackParty);
+    }
+
 }
