@@ -6,12 +6,17 @@ use App\Helpers\Money;
 use App\Models\BlackjackParty;
 use App\Models\Casino;
 use App\Models\User;
+use App\Services\CasinoGame\CasinoRoulette2Service;
+use App\Services\CasinoGame\CasinoRouletteService;
 use App\Services\CasinoService;
 use Illuminate\Auth\Access\Response;
 
 class CasinoPolicy
 {
-    public function __construct(private CasinoService $casinoService)
+    public function __construct(
+        private CasinoService $casinoService,
+        private CasinoRoulette2Service $casinoRoulette2Service
+    )
     {
     }
 
@@ -25,11 +30,14 @@ class CasinoPolicy
 
     public function playGame(User $user, Casino $casino) {
         $bet = request()->input("bet");
+        $game = request()->attributes->get('game');
+        if($game === "roulette2") {
+            $bet = $this->casinoRoulette2Service->getTotalBet($bet);
+        }
         Money::check($bet);
 
         $ticket = $this->casinoService->getUserTicketForCasino($user, $casino);
         $isVIP = $ticket->isVIP;
-        $game = request()->attributes->get('game');
         request()->attributes->set('isVIP', $isVIP);
 
         if($bet > $casino->getMaxBetForGame($game, $isVIP)) {

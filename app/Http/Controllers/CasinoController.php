@@ -8,13 +8,16 @@ use App\Http\Actions\Casino\Game\FinishBlackjackPartyAction;
 use App\Http\Actions\Casino\Game\HitBlackjackAction;
 use App\Http\Actions\Casino\Game\PlayDiceAction;
 use App\Http\Actions\Casino\Game\PlayPokerAction;
+use App\Http\Actions\Casino\Game\PlayRoulette2Action;
 use App\Http\Actions\Casino\Game\PlayRouletteAction;
 use App\Http\Requests\Casino\BasicGameRequest;
 use App\Http\Requests\Casino\BuyTicketRequest;
+use App\Http\Requests\Casino\PlayRoulette2Request;
 use App\Http\Resources\BlackjackPartyResource;
 use App\Http\Resources\CasinoTicketResource;
 use App\Models\BlackjackParty;
 use App\Models\Casino;
+use App\Services\CasinoGame\CasinoRoulette2Service;
 use App\Services\CasinoService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
@@ -106,6 +109,17 @@ class CasinoController extends Controller
         $isVIP = $ticket->isVIP;
 
         $res = $action->handle($blackjack_party, $isVIP);
+        return $res;
+    }
+
+    public function playRoulette2(PlayRoulette2Request $request, Casino $casino, PlayRoulette2Action $action)
+    {
+        request()->attributes->add(["game" => "roulette2"]);
+        $this->authorize("playGame", $casino);
+
+        $res = $action->handle(Auth::user(), $casino, "roulette2", $request->input("bet"),
+            request()->attributes->get('isVIP'));
+
         return $res;
     }
 

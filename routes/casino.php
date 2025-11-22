@@ -20,6 +20,7 @@ Route::prefix('/casino')->middleware("auth:sanctum")->group(function(){
                     Route::patch("/finish", [CasinoController::class, "finishBlackjack"]);
                 });
             });
+            Route::post("/roulette2", [CasinoController::class, "playRoulette2"])->middleware("check_company_level:5");
         });
     });
 });

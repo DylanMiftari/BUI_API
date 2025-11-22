@@ -187,3 +187,67 @@ This route create a blackjack party
     "bet": "bet of the user"
 }
 ```
+---
+
+## Play roulette2 party
+Play a roulette2 party  
+**Method :** POST  
+**Route :** /{casino}/game/roulette2
+**Payload :**
+```json
+{
+    "bet": { // All objects are facultative
+        "straight_up": {
+            "number": "number 0-36",
+            "bet": "the user bet"
+        },
+        "split": {
+            "numbers": "a list with two numbers",
+            "bet": "the user bet"
+        },
+        "street": {
+            "numbers": "a list with three numbers",
+            "bet": "the user bet"
+        },
+        "corner": {
+            "numbers": "a list with 4 numbers",
+            "bet": "the user bet"
+        },
+        "sixline": {
+            "numbers": "a list with 6 numbers",
+            "bet": "the user bet"
+        },
+        "column": {
+            "column_number": "a column number 0, 1 or 2",
+            "bet": "the user bet"
+        },
+        "dozen": {
+            "dozen_number": "a dozen number 0, 1 or 2",
+            "bet": "the user bet"
+        },
+        "middle": {
+            "part_number": "middle number 0 or 1",
+            "bet": "the user bet"
+        },
+        "red_black": {
+            "bet_name": "the color red or black",
+            "bet": "the user bet"
+        },
+        "odd_even": {
+            "bet_name": "the user choice : odd or even",
+            "bet": "the user bet"
+        }
+    }
+}
+```
+**Return :**
+```json
+{
+    "bet": "the total user bet",
+    "winnings": "the total user winnings",
+    "res": [
+        "list of successfully bet of the user"
+    ],
+    "roll": "the rolled number"
+}
+```
