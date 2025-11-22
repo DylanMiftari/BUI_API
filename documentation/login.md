@@ -73,6 +73,7 @@ The currently logged user
     "companiesCount": "user's companies count",
     "minesCount": "user's companies count",
     "cityName": "user's city name",
+    "casinoTicketsCount": "count of user's casino tickets",
     "companies": [ // if "company" is present in with param
         {
             "id": "id of the company",
