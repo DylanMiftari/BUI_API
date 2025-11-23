@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/casino')->middleware("auth:sanctum")->group(function(){
     Route::get("/tickets", [CasinoController::class, 'playerTickets']);
     Route::prefix("/{casino}")->middleware("casino_activated")->group(function(){
+        Route::get("/", [CasinoController::class, 'showCasino']);
         Route::post("/buy", [CasinoController::class, "buyTicket"]);
+
+        Route::get("/have-ticket", [CasinoController::class, 'hasTicket'])->middleware("check_casino_ticket");
 
         Route::prefix("/game")->middleware("check_casino_ticket")->group(function(){
             Route::post("/roulette", [CasinoController::class, "playRoulette"])->middleware("check_company_level:1");

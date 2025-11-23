@@ -17,6 +17,33 @@ class UpgradeCompanyAction
         $company->companyLevel++;
         $company->save();
 
+        switch ($company->type) {
+            case "bank":
+                $company->bank->level++;
+                $company->bank->save();
+                break;
+            case "casino":
+                $company->casino->level++;
+                $company->casino->save();
+                break;
+            case "mafia":
+                $company->mafia->level++;
+                $company->mafia->save();
+                break;
+            case "estate":
+                $company->estate->level++;
+                $company->estate->save();
+                break;
+            case "factory":
+                $company->factory->level++;
+                $company->factory->save();
+                break;
+            case "security":
+                $company->security->level++;
+                $company->security->save();
+                break;
+        }
+
         return $company;
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\With;
 use App\Http\Actions\Casino\BuyTicketAction;
 use App\Http\Actions\Casino\Game\CreateBlackjackPartyAction;
 use App\Http\Actions\Casino\Game\FinishBlackjackPartyAction;
@@ -14,6 +15,7 @@ use App\Http\Requests\Casino\BasicGameRequest;
 use App\Http\Requests\Casino\BuyTicketRequest;
 use App\Http\Requests\Casino\PlayRoulette2Request;
 use App\Http\Resources\BlackjackPartyResource;
+use App\Http\Resources\CasinoResource;
 use App\Http\Resources\CasinoTicketResource;
 use App\Models\BlackjackParty;
 use App\Models\Casino;
@@ -121,6 +123,17 @@ class CasinoController extends Controller
             request()->attributes->get('isVIP'));
 
         return $res;
+    }
+
+    public function showCasino(Casino $casino)
+    {
+        With::add("casino-dashboard");
+        return new CasinoResource($casino);
+    }
+
+    public function hasTicket(Casino $casino)
+    {
+        return [];
     }
 
 }
