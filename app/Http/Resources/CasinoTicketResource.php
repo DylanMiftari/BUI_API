@@ -18,6 +18,7 @@ class CasinoTicketResource extends JsonResource
             "id" => $this->id,
             "isVIP" => $this->isVIP,
             "createdAt" => $this->created_at,
+            "expireAt" => $this->created_at->addDays(config("casino.ticket-lifetime-days")),
             "casino" => new CasinoResource($this->casino)
         ];
     }
