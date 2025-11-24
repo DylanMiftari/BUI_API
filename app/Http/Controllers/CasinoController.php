@@ -136,4 +136,12 @@ class CasinoController extends Controller
         return [];
     }
 
+    public function showTicket(Casino $casino)
+    {
+        $ticket = $this->casinoService->getUserTicketForCasino(Auth::user(), $casino);
+        With::add("max-bet");
+
+        return new CasinoTicketResource($ticket);
+    }
+
 }
