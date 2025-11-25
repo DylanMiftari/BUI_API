@@ -26,5 +26,9 @@ Route::prefix('/casino')->middleware("auth:sanctum")->group(function(){
             });
             Route::post("/roulette2", [CasinoController::class, "playRoulette2"])->middleware("check_company_level:5");
         });
+
+        Route::prefix("/game-data")->group(function(){
+            Route::get("/roulette", [CasinoController::class, "getRouletteData"]);
+        });
     });
 });

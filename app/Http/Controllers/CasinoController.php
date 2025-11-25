@@ -144,4 +144,18 @@ class CasinoController extends Controller
         return new CasinoTicketResource($ticket);
     }
 
+    public function getRouletteData(Casino $casino)
+    {
+        return [
+            "sequenceMultiplicator" => $casino->rouletteSequenceMultiplicator,
+            "tripletMultiplicator" => $casino->rouletteTripletMultiplcator,
+            "tripleSevenMultiplicator" => $casino->rouletteTripleSeventMultiplicator,
+            "sequenceVIPMultiplicator" => $casino->rouletteVIPSequenceMultiplicator,
+            "tripletVIPMultiplicator" => $casino->rouletteVIPTripletMultiplcator,
+            "tripleSevenVIPMultiplicator" => $casino->rouletteVIPTripleSeventMultiplicator,
+            "maxBet" => $casino->rouletteMaxBet,
+            "maxVIPBet" => $casino->rouletteMaxVIPBet,
+        ];
+    }
+
 }
