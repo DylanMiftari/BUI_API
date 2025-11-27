@@ -29,8 +29,7 @@ class CasinoController extends Controller
     use AuthorizesRequests;
     public function __construct(
         private CasinoService $casinoService
-    )
-    {
+    ) {
     }
 
     public function playerTickets()
@@ -54,8 +53,13 @@ class CasinoController extends Controller
 
         $this->authorize("playGame", $casino);
 
-        $res = $action->handle(Auth::user(), $casino, "roulette", $request->input("bet"),
-            request()->attributes->get('isVIP'));
+        $res = $action->handle(
+            Auth::user(),
+            $casino,
+            "roulette",
+            $request->input("bet"),
+            request()->attributes->get('isVIP')
+        );
 
         return $res;
     }
@@ -65,8 +69,13 @@ class CasinoController extends Controller
         request()->attributes->add(["game" => "dice"]);
         $this->authorize("playGame", $casino);
 
-        $res = $action->handle(Auth::user(), $casino, "dice", $request->input("bet"),
-            request()->attributes->get('isVIP'));
+        $res = $action->handle(
+            Auth::user(),
+            $casino,
+            "dice",
+            $request->input("bet"),
+            request()->attributes->get('isVIP')
+        );
 
         return $res;
     }
@@ -76,8 +85,13 @@ class CasinoController extends Controller
         request()->attributes->add(["game" => "poker"]);
         $this->authorize("playGame", $casino);
 
-        $res = $action->handle(Auth::user(), $casino, "poker", $request->input("bet"),
-            request()->attributes->get('isVIP'));
+        $res = $action->handle(
+            Auth::user(),
+            $casino,
+            "poker",
+            $request->input("bet"),
+            request()->attributes->get('isVIP')
+        );
 
         return $res;
     }
@@ -88,7 +102,7 @@ class CasinoController extends Controller
         $this->authorize("playGame", $casino);
 
         $blackjackParty = Auth::user()->blackjackPartyForCasino($casino);
-        if($blackjackParty == null){
+        if ($blackjackParty == null) {
             $blackjackParty = $action->handle(Auth::user(), $casino, $request->input("bet"));
         }
 
@@ -119,8 +133,13 @@ class CasinoController extends Controller
         request()->attributes->add(["game" => "roulette2"]);
         $this->authorize("playGame", $casino);
 
-        $res = $action->handle(Auth::user(), $casino, "roulette2", $request->input("bet"),
-            request()->attributes->get('isVIP'));
+        $res = $action->handle(
+            Auth::user(),
+            $casino,
+            "roulette2",
+            $request->input("bet"),
+            request()->attributes->get('isVIP')
+        );
 
         return $res;
     }
@@ -155,6 +174,18 @@ class CasinoController extends Controller
             "tripleSevenVIPMultiplicator" => $casino->rouletteVIPTripleSeventMultiplicator,
             "maxBet" => $casino->rouletteMaxBet,
             "maxVIPBet" => $casino->rouletteMaxVIPBet,
+        ];
+    }
+
+    public function getDiceData(Casino $casino)
+    {
+        return [
+            "goal" => $casino->diceGoal,
+            "winMultiplicator" => $casino->diceWinMultiplicator,
+            "maxBet" => $casino->diceMaxBet,
+            "vipGoal" => $casino->diceVIPGoal,
+            "vipWinMultiplicator" => $casino->diceVIPWinMultiplicator,
+            "vipMaxBet" => $casino->diceVIPMaxBet,
         ];
     }
 
