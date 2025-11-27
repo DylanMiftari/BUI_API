@@ -189,4 +189,32 @@ class CasinoController extends Controller
         ];
     }
 
+    public function getPokerData(Casino $casino)
+    {
+        return [
+            "nothingMultiplicator" => $casino->nothingMultiplicator,
+            "onePairMultiplicator" => $casino->onePairMultiplicator,
+            "twoPairMultiplicator" => $casino->twoPairMultiplicator,
+            "threeOfAKindMultiplicator" => $casino->threeOfAKindMultiplicator,
+            "straightMultiplicator" => $casino->straightMultiplicator,
+            "flushMultiplicator" => $casino->flushMultiplicator,
+            "fullHouseMultiplicator" => $casino->fullHouseMultiplicator,
+            "fourOfAKindMultiplicator" => $casino->fourOfAKindMultiplicator,
+            "straightFlushMultiplicator" => $casino->straightFlushMultiplicator,
+            "royalFlushMultiplicator" => $casino->royalFlushMultiplicator,
+            "maxBet" => $casino->pokerMaxBet,
+            "nothingVIPMultiplicator" => $casino->nothingVIPMultiplicator,
+            "onePairVIPMultiplicator" => $casino->onePairVIPMultiplicator,
+            "twoPairVIPMultiplicator" => $casino->twoPairVIPMultiplicator,
+            "threeOfAKindVIPMultiplicator" => $casino->threeOfAKindVIPMultiplicator,
+            "straightVIPMultiplicator" => $casino->straightVIPMultiplicator,
+            "flushVIPMultiplicator" => $casino->flushVIPMultiplicator,
+            "fullHouseVIPMultiplicator" => $casino->fullHouseVIPMultiplicator,
+            "fourOfAKindVIPMultiplicator" => $casino->fourOfAKindVIPMultiplicator,
+            "straightFlushVIPMultiplicator" => $casino->straightFlushVIPMultiplicator,
+            "royalFlushVIPMultiplicator" => $casino->royalFlushVIPMultiplicator,
+            "maxVIPBet" => $casino->pokerMaxVIPBet,
+        ];
+    }
+
 }
