@@ -217,4 +217,16 @@ class CasinoController extends Controller
         ];
     }
 
+    public function getBlackjackData(Casino $casino)
+    {
+        return [
+            "winMultiplicator" => $casino->blackJackWinMultiplicator,
+            "blackjackMultiplicator" => $casino->blackJackMultiplicator,
+            "maxBet" => $casino->blackJackMaxBet,
+            "vipWinMultiplicator" => $casino->blackJackVIPWinMultiplicator,
+            "vipBlackjackMultiplicator" => $casino->blackJackVIPMultiplicator,
+            "vipMaxBet" => $casino->blackJackVIPMaxBet,
+        ];
+    }
+
 }

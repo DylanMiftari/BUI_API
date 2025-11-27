@@ -57,7 +57,7 @@ class CasinoBlackjackService
         if($userSum > $bankSum || $bankSum > 21) {
             return "win";
         }
-        if($userHand == $bankHand) {
+        if($userSum == $bankSum) {
             return "push";
         }
         if($userHand < $bankHand) {

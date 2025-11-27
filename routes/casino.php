@@ -31,6 +31,7 @@ Route::prefix('/casino')->middleware("auth:sanctum")->group(function () {
             Route::get("/roulette", [CasinoController::class, "getRouletteData"]);
             Route::get("/dice", [CasinoController::class, "getDiceData"]);
             Route::get("/poker", [CasinoController::class, "getPokerData"]);
+            Route::get("/blackjack", [CasinoController::class, "getBlackjackData"]);
         });
     });
 });
