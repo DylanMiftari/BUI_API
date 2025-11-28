@@ -229,4 +229,32 @@ class CasinoController extends Controller
         ];
     }
 
+    public function getRoulette2Data(Casino $casino)
+    {
+        return [
+            "straightUpMultiplicator" => $casino->roulette2StraigthUpMultiplicator,
+            "splitMultiplicator" => $casino->roulette2SplitMultiplicator,
+            "streetMultiplicator" => $casino->roulette2treetMultiplicator,
+            "cornerMultiplicator" => $casino->roulette2CornerMultiplicator,
+            "sixLineMultiplicator" => $casino->roulette2SixLineMultiplicator,
+            "columnMultiplicator" => $casino->roulette2ColumnMultiplicator,
+            "dozenMultiplicator" => $casino->roulette2DozenMultiplicator,
+            "oddEvenMultiplicator" => $casino->roulette2OddEvenMultiplicator,
+            "redBlackMultiplicator" => $casino->roulette2RedBlackMultiplicator,
+            "middleMultiplicator" => $casino->roulette2MiddleMultiplicator,
+            "maxBet" => $casino->roulette2MaxBet,
+            "vipStraightUpMultiplicator" => $casino->roulette2VIPStraigthUpMultiplicator,
+            "vipSplitMultiplicator" => $casino->roulette2VIPSplitMultiplicator,
+            "vipStreetMultiplicator" => $casino->roulette2VIPtreetMultiplicator,
+            "vipCornerMultiplicator" => $casino->roulette2VIPCornerMultiplicator,
+            "vipSixLineMultiplicator" => $casino->roulette2VIPSixLineMultiplicator,
+            "vipColumnMultiplicator" => $casino->roulette2VIPColumnMultiplicator,
+            "vipDozenMultiplicator" => $casino->roulette2VIPDozenMultiplicator,
+            "vipOddEvenMultiplicator" => $casino->roulette2VIPOddEvenMultiplicator,
+            "vipRedBlackMultiplicator" => $casino->roulette2VIPRedBlackMultiplicator,
+            "vipMiddleMultiplicator" => $casino->roulette2VIPMiddleMultiplicator,
+            "vipMaxBet" => $casino->roulette2VIPMaxBet,
+        ];
+    }
+
 }

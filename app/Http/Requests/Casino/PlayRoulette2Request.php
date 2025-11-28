@@ -27,30 +27,41 @@ class PlayRoulette2Request extends FormRequest
     {
         return [
             "bet" => ["required", "array"],
-            "bet.*.bet" => ["decimal:0,2"],
+            "bet.*" => ["array"],
 
-            "bet.straight_up" => ["array"],
-            "bet.straight_up.number" => ["integer", "min:0", "max:36"],
+            "bet.straight_up.*.bet" => ["decimal:0,2"],
+            "bet.straight_up.*.number" => ["integer", "min:0", "max:36"],
 
-            "bet.split.numbers" => ["array", "size:2", new Roulette2SplitValidator()],
-            "bet.split.numbers.*" => ["integer", "min:0", "max:36"],
+            "bet.split.*.bet" => ["decimal:0,2"],
+            "bet.split.*.numbers" => ["array", "size:2", new Roulette2SplitValidator()],
+            "bet.split.*.numbers.*" => ["integer", "min:0", "max:36"],
 
-            "bet.street.numbers" => ["array", "size:3", new Roulette2StreetValidator()],
-            "bet.street.numbers.*" => ["integer", "min:0", "max:36"],
+            "bet.street.*.bet" => ["decimal:0,2"],
+            "bet.street.*.numbers" => ["array", "size:3", new Roulette2StreetValidator()],
+            "bet.street.*.numbers.*" => ["integer", "min:0", "max:36"],
 
-            "bet.corner.numbers" => ["array", "size:4", new Roulette2CornerValidator()],
-            "bet.corner.numbers.*" => ["integer", "min:0", "max:36"],
+            "bet.corner.*.bet" => ["decimal:0,2"],
+            "bet.corner.*.numbers" => ["array", "size:4", new Roulette2CornerValidator()],
+            "bet.corner.*.numbers.*" => ["integer", "min:0", "max:36"],
 
-            "bet.sixline.numbers" => ["array", "size:6", new Roulette2SixLineValidator()],
-            "bet.sixline.numbers.*" => ["integer", "min:0", "max:36"],
+            "bet.sixline.*.bet" => ["decimal:0,2"],
+            "bet.sixline.*.numbers" => ["array", "size:6", new Roulette2SixLineValidator()],
+            "bet.sixline.*.numbers.*" => ["integer", "min:0", "max:36"],
 
-            "bet.column.column_number" => ["integer", "min:0", "max:2"],
-            "bet.dozen.dozen_number" => ["integer", "min:0", "max:2"],
+            "bet.column.*.bet" => ["decimal:0,2"],
+            "bet.column.*.column_number" => ["integer", "min:0", "max:2"],
 
-            "bet.odd_even.bet_name" => ["string", "in:odd,even"],
-            "bet.red_black.bet_name" => ["string", "in:red,black"],
+            "bet.dozen.*.bet" => ["decimal:0,2"],
+            "bet.dozen.*.dozen_number" => ["integer", "min:0", "max:2"],
 
-            "bet.middle.part_number" => ["integer", "min:0", "max:1"],
+            "bet.odd_even.*.bet" => ["decimal:0,2"],
+            "bet.odd_even.*.bet_name" => ["string", "in:odd,even"],
+
+            "bet.red_black.*.bet" => ["decimal:0,2"],
+            "bet.red_black.*.bet_name" => ["string", "in:red,black"],
+
+            "bet.middle.*.bet" => ["decimal:0,2"],
+            "bet.middle.*.part_number" => ["integer", "min:0", "max:1"],
         ];
     }
 }
