@@ -10,7 +10,11 @@ use Illuminate\Support\Carbon;
 class Casino extends Model
 {
     protected $table = "casino";
-    protected $fillable = ["companyId"];
+    protected $fillable = [
+        "companyId",
+        "ticketPrice",
+        "VIPTicketPrice"
+    ];
 
     public function getTicketPrice(bool $isVIP): float {
         return $isVIP ? $this->VIPTicketPrice : $this->ticketPrice;

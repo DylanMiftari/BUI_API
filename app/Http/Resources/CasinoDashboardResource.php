@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Helpers\With;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -20,6 +21,7 @@ class CasinoDashboardResource extends JsonResource
 
         return [
             "info" => [
+                "id" => $casino->id,
                 "name" => $casino->company->name,
                 "level" => $casino->level,
                 "moneyInSafe" => $casino->company->moneyInSafe,
@@ -30,7 +32,13 @@ class CasinoDashboardResource extends JsonResource
                 "companyId" => $casino->company->id,
             ],
             "nextLevelPrice" => $nextLevelPrice,
-            "levels" => $levels
+            "levels" => $levels,
+            $this->mergeWhen(With::has("config"), [
+                "config" => [
+                    "ticketPrice" => $casino->ticketPrice,
+                    "vipTicketPrice" => $casino->VIPTicketPrice,
+                ]
+            ])
         ];
     }
 }

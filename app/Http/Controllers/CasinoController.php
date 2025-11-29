@@ -15,6 +15,7 @@ use App\Http\Actions\Casino\Game\PlayRouletteAction;
 use App\Http\Requests\Casino\BasicGameRequest;
 use App\Http\Requests\Casino\BuyTicketRequest;
 use App\Http\Requests\Casino\PlayRoulette2Request;
+use App\Http\Requests\Casino\UpdateTicketPriceRequest;
 use App\Http\Resources\BlackjackPartyResource;
 use App\Http\Resources\CasinoDashboardResource;
 use App\Http\Resources\CasinoResource;
@@ -264,6 +265,13 @@ class CasinoController extends Controller
         $res = $action->handle($casino);
 
         return new CasinoDashboardResource($res);
+    }
+
+    public function updateTicketPrice(UpdateTicketPriceRequest $request, Casino $casino)
+    {
+        $casino->update($request->validated());
+
+        return response()->noContent();
     }
 
 }
