@@ -6,6 +6,7 @@ use App\Helpers\With;
 use App\Http\Actions\Company\CreateCompanyAction;
 use App\Http\Actions\Company\UpgradeCompanyAction;
 use App\Http\Requests\Company\CreateCompanyRequest;
+use App\Http\Resources\CasinoResource;
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -36,5 +37,13 @@ class CompanyController extends Controller
         return response()->json([
             "result" => true,
         ]);
+    }
+
+    public function getSubCompany(Company $company)
+    {
+        switch($company->companyType) {
+            case "casino":
+                return new CasinoResource($company->casino);
+        }
     }
 }

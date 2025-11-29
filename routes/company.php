@@ -10,6 +10,7 @@ Route::prefix("/company")->group(function() {
 
         Route::prefix("/{company}")->middleware(["company_ownership"])->group(function() {
             Route::patch("/upgrade", [CompanyController::class, "upgrade"]);
+            Route::get("/sub-company", [CompanyController::class, "getSubCompany"]);
         });
     });
 });

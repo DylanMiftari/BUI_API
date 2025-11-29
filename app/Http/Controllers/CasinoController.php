@@ -9,12 +9,14 @@ use App\Http\Actions\Casino\Game\FinishBlackjackPartyAction;
 use App\Http\Actions\Casino\Game\HitBlackjackAction;
 use App\Http\Actions\Casino\Game\PlayDiceAction;
 use App\Http\Actions\Casino\Game\PlayPokerAction;
+use App\Http\Actions\Casino\GetCasinoDashboardAction;
 use App\Http\Actions\Casino\Game\PlayRoulette2Action;
 use App\Http\Actions\Casino\Game\PlayRouletteAction;
 use App\Http\Requests\Casino\BasicGameRequest;
 use App\Http\Requests\Casino\BuyTicketRequest;
 use App\Http\Requests\Casino\PlayRoulette2Request;
 use App\Http\Resources\BlackjackPartyResource;
+use App\Http\Resources\CasinoDashboardResource;
 use App\Http\Resources\CasinoResource;
 use App\Http\Resources\CasinoTicketResource;
 use App\Models\BlackjackParty;
@@ -255,6 +257,13 @@ class CasinoController extends Controller
             "vipMiddleMultiplicator" => $casino->roulette2VIPMiddleMultiplicator,
             "vipMaxBet" => $casino->roulette2VIPMaxBet,
         ];
+    }
+
+    public function getDashboard(Casino $casino, GetCasinoDashboardAction $action)
+    {
+        $res = $action->handle($casino);
+
+        return new CasinoDashboardResource($res);
     }
 
 }

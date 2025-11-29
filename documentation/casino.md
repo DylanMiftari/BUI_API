@@ -251,3 +251,52 @@ Play a roulette2 party
     "roll": "the rolled number"
 }
 ```
+---
+
+## Get Dashboard Data
+
+**URL** : `/api/casino/{casino}/dashboard`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+**Permissions required** : Owner of the casino
+
+### Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+```json
+{
+    "data": {
+        "info": {
+            "name": "My Casino",
+            "level": 1,
+            "moneyInSafe": 150000,
+            "ticketsSold": 12,
+            "vipTicketsSold": 3,
+            "maxTickets": 100,
+            "maxVipTickets": 10
+        },
+        "nextLevelPrice": 20000,
+        "levels": [
+            {
+                "level": 1,
+                "nbMaxTicket": 100,
+                "nbMaxVIPTicket": 10,
+                "maxTicketPrice": 100,
+                "maxVIPTicketPrice": 1000,
+                "maxSuiteRent": 5000,
+                "nbMaxSuite": 2,
+                "rouletteMaxBet": 500,
+                ...
+            },
+            ...
+        ]
+    }
+}
+```
+
