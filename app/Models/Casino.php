@@ -50,6 +50,12 @@ class Casino extends Model
         "straightFlushVIPMultiplicator",
         "royalFlushVIPMultiplicator",
         "pokerMaxVIPBet",
+        "blackJackWinMultiplicator",
+        "blackJackMultiplicator",
+        "blackJackMaxBet",
+        "blackJackVIPWinMultiplicator",
+        "blackJackVIPMultiplicator",
+        "blackJackVIPMaxBet",
     ];
 
     public function getTicketPrice(bool $isVIP): float

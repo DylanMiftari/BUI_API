@@ -73,6 +73,12 @@ class CasinoDashboardResource extends JsonResource
                     "straightFlushVIPMultiplicator" => $casino->straightFlushVIPMultiplicator,
                     "royalFlushVIPMultiplicator" => $casino->royalFlushVIPMultiplicator,
                     "pokerMaxVIPBet" => $casino->pokerMaxVIPBet,
+                    "blackJackWinMultiplicator" => $casino->blackJackWinMultiplicator,
+                    "blackJackMultiplicator" => $casino->blackJackMultiplicator,
+                    "blackJackMaxBet" => $casino->blackJackMaxBet,
+                    "blackJackVIPWinMultiplicator" => $casino->blackJackVIPWinMultiplicator,
+                    "blackJackVIPMultiplicator" => $casino->blackJackVIPMultiplicator,
+                    "blackJackVIPMaxBet" => $casino->blackJackVIPMaxBet,
                 ]
             ])
         ];
