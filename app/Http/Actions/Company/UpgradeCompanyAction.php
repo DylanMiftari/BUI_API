@@ -17,7 +17,7 @@ class UpgradeCompanyAction
         $company->companyLevel++;
         $company->save();
 
-        switch ($company->type) {
+        switch ($company->companyType) {
             case "bank":
                 $company->bank->level++;
                 $company->bank->save();
