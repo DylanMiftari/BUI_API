@@ -13,7 +13,15 @@ class Casino extends Model
     protected $fillable = [
         "companyId",
         "ticketPrice",
-        "VIPTicketPrice"
+        "VIPTicketPrice",
+        "rouletteSequenceMultiplicator",
+        "rouletteTripletMultiplcator",
+        "rouletteTripleSeventMultiplicator",
+        "rouletteMaxBet",
+        "rouletteVIPSequenceMultiplicator",
+        "rouletteVIPTripletMultiplcator",
+        "rouletteVIPTripleSeventMultiplicator",
+        "rouletteMaxVIPBet",
     ];
 
     public function getTicketPrice(bool $isVIP): float {

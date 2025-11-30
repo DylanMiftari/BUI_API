@@ -37,6 +37,14 @@ class CasinoDashboardResource extends JsonResource
                 "config" => [
                     "ticketPrice" => $casino->ticketPrice,
                     "vipTicketPrice" => $casino->VIPTicketPrice,
+                    "rouletteSequenceMultiplicator" => $casino->rouletteSequenceMultiplicator,
+                    "rouletteTripletMultiplcator" => $casino->rouletteTripletMultiplcator,
+                    "rouletteTripleSeventMultiplicator" => $casino->rouletteTripleSeventMultiplicator,
+                    "rouletteMaxBet" => $casino->rouletteMaxBet,
+                    "rouletteVIPSequenceMultiplicator" => $casino->rouletteVIPSequenceMultiplicator,
+                    "rouletteVIPTripletMultiplcator" => $casino->rouletteVIPTripletMultiplcator,
+                    "rouletteVIPTripleSeventMultiplicator" => $casino->rouletteVIPTripleSeventMultiplicator,
+                    "rouletteMaxVIPBet" => $casino->rouletteMaxVIPBet,
                 ]
             ])
         ];
