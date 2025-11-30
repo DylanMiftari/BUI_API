@@ -22,21 +22,31 @@ class Casino extends Model
         "rouletteVIPTripletMultiplcator",
         "rouletteVIPTripleSeventMultiplicator",
         "rouletteMaxVIPBet",
+        "diceGoal",
+        "diceWinMultiplicator",
+        "diceMaxBet",
+        "diceVIPGoal",
+        "diceVIPWinMultiplicator",
+        "diceVIPMaxBet",
     ];
 
-    public function getTicketPrice(bool $isVIP): float {
+    public function getTicketPrice(bool $isVIP): float
+    {
         return $isVIP ? $this->VIPTicketPrice : $this->ticketPrice;
     }
 
-    public function company(): HasOne {
+    public function company(): HasOne
+    {
         return $this->hasOne(Company::class, 'id', 'companyId');
     }
 
-    public function tickets(): HasMany {
+    public function tickets(): HasMany
+    {
         return $this->hasMany(CasinoTicket::class, 'casinoId', 'id');
     }
 
-    public function casinoLevel(): HasOne {
+    public function casinoLevel(): HasOne
+    {
         return $this->hasOne(CasinoLevel::class, 'level', 'level');
     }
 
@@ -47,7 +57,8 @@ class Casino extends Model
             ->get();
     }
 
-    public function getMaxBetForGame(string $game, bool $isVIP = false): float {
+    public function getMaxBetForGame(string $game, bool $isVIP = false): float
+    {
         switch ($game) {
             case "roulette":
                 return $isVIP ? $this->rouletteMaxVIPBet : $this->rouletteMaxBet;
@@ -63,10 +74,12 @@ class Casino extends Model
         return 0;
     }
 
-    public function getActiveTicketsCount(): int {
+    public function getActiveTicketsCount(): int
+    {
         return $this->activeTickets()->where("isVIP", 0)->count();
     }
-    public function getActiveVIPTicketsCount(): int {
+    public function getActiveVIPTicketsCount(): int
+    {
         return $this->activeTickets()->where("isVIP", 1)->count();
     }
 }

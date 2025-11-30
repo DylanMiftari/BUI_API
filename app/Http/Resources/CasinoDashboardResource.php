@@ -45,6 +45,12 @@ class CasinoDashboardResource extends JsonResource
                     "rouletteVIPTripletMultiplcator" => $casino->rouletteVIPTripletMultiplcator,
                     "rouletteVIPTripleSeventMultiplicator" => $casino->rouletteVIPTripleSeventMultiplicator,
                     "rouletteMaxVIPBet" => $casino->rouletteMaxVIPBet,
+                    "diceGoal" => $casino->diceGoal,
+                    "diceWinMultiplicator" => $casino->diceWinMultiplicator,
+                    "diceMaxBet" => $casino->diceMaxBet,
+                    "diceVIPGoal" => $casino->diceVIPGoal,
+                    "diceVIPWinMultiplicator" => $casino->diceVIPWinMultiplicator,
+                    "diceVIPMaxBet" => $casino->diceVIPMaxBet,
                 ]
             ])
         ];
