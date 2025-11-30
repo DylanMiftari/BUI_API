@@ -42,6 +42,7 @@ Route::prefix('/casino')->middleware("auth:sanctum")->group(function () {
                 Route::patch("/ticket-price", [CasinoController::class, "updateTicketPrice"]);
                 Route::patch("/roulette", [CasinoController::class, "updateRoulette"]);
                 Route::patch("/dice", [CasinoController::class, "updateDice"]);
+                Route::patch("/poker", [CasinoController::class, "updatePoker"]);
             });
         });
     });
