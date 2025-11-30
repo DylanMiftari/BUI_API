@@ -18,6 +18,7 @@ use App\Http\Requests\Casino\PlayRoulette2Request;
 use App\Http\Requests\Casino\UpdateBlackjackRequest;
 use App\Http\Requests\Casino\UpdateDiceRequest;
 use App\Http\Requests\Casino\UpdatePokerRequest;
+use App\Http\Requests\Casino\UpdateRoulette2Request;
 use App\Http\Requests\Casino\UpdateRouletteRequest;
 use App\Http\Requests\Casino\UpdateTicketPriceRequest;
 use App\Http\Resources\BlackjackPartyResource;
@@ -300,6 +301,13 @@ class CasinoController extends Controller
     }
 
     public function updateBlackjack(UpdateBlackjackRequest $request, Casino $casino)
+    {
+        $casino->update($request->validated());
+
+        return response()->noContent();
+    }
+
+    public function updateRoulette2(UpdateRoulette2Request $request, Casino $casino)
     {
         $casino->update($request->validated());
 
