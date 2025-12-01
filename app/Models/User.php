@@ -87,6 +87,10 @@ class User extends Authenticatable
         return $this->hasMany(BlackjackParty::class, "userId", "id");
     }
 
+    public function bankAccounts(): HasMany {
+        return $this->hasMany(BankAccount::class, "userId", "id");
+    }
+
 
 
     public function blackjackPartyForCasino(Casino $casino): BlackjackParty|null {
