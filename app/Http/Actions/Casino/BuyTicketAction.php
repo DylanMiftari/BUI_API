@@ -17,7 +17,7 @@ class BuyTicketAction
     }
     public function handle(User $user, Casino $casino, bool $isVIP): CasinoTicket {
         $ticketPrice = $casino->getTicketPrice($isVIP);
-        Money::pay($ticketPrice);
+        Money::pay($ticketPrice, "Buy a ".($isVIP ? 'VIP' : '')." ticket for the casino".$casino->company->name);
         $this->casinoService->payCasino($casino, $ticketPrice);
 
         $casinoTicket = new CasinoTicket();

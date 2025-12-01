@@ -16,7 +16,7 @@ class PlayGameAction
     {
     }
     public function handleBasic(User $user, Casino $casino, string $game, float $bet, float $winnings) {
-        Money::pay($bet);
+        Money::pay($bet, "Play at $game in the casino ".$casino->company->name);
         $this->casinoService->payCasino($casino, $bet);
         CasinoParty::create([
             "gameName" => $game,
@@ -28,7 +28,7 @@ class PlayGameAction
 
         if($winnings > 0) {
             Money::canStore($winnings);
-            Money::creditMoney($winnings);
+            Money::creditMoney($winnings, "You win in the casino ".$casino->company->name." at the $game");
             $this->casinoService->removeMoneyFromCasino($casino, $winnings);
         }
 

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Actions\Mine;
 
@@ -9,7 +9,7 @@ class UpgradeMineAction {
 
     public function handle(Mine $mine) {
         $mineLevel = $mine->mineLevel;
-        Money::pay($mineLevel->priceForNextLevel);
+        Money::pay($mineLevel->priceForNextLevel, "Upgrade your mine at the level ".$mineLevel->level);
         $mine->upgrade();
     }
 

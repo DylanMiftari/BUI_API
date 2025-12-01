@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Actions\Resource;
 
@@ -37,7 +37,7 @@ class SellResourceAction {
                 HelpersResource::remove($currentResource, $quantityToSell);
             }
         }
-        Money::creditMoney($money);
+        Money::creditMoney($money, "You sell resources");
 
         return [
             "selled_resources" => $selledResources,

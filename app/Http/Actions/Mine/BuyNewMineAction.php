@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Actions\Mine;
 
@@ -12,7 +12,7 @@ class BuyNewMineAction {
         $user = Auth::user();
         $mineCount = $user->mines->count();
 
-        Money::pay(config("mine.price_for_new_mine")[$mineCount+1]);
+        Money::pay(config("mine.price_for_new_mine")[$mineCount+1], "Buy a new mine");
 
         $mine = new Mine();
         $mine->userId = $user->id;

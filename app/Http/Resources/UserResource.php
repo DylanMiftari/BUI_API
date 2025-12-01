@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Helpers\Money;
 use App\Helpers\With;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -18,7 +19,7 @@ class UserResource extends JsonResource
         return [
             "id" => $this->id,
             "pseudo" => $this->pseudo,
-            "userMoney" => $this->when(With::securedHas("userMoney", $this->resource), $this->playerMoney),
+            "userMoney" => $this->when(With::securedHas("userMoney", $this->resource), Money::getAllMoney()),
             "companies" => $this->when(With::has("company"), CompanyResource::collection($this->companies)),
             "mines" => $this->when(With::has("mine"), MineResource::collection($this->mines)),
             $this->mergeWhen(With::securedHas("dashboard", $this->resource), [

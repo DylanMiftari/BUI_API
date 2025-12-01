@@ -18,4 +18,8 @@ class Bank extends Model
     public function bankAccounts(): HasMany {
         return $this->hasMany(BankAccount::class, "bankId", "id");
     }
+
+    public function company(): HasOne {
+        return $this->hasOne(Company::class, "id", "idCompany");
+    }
 }
