@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\Bank\NotHaveBankAccountMiddleware;
 use App\Http\Middleware\Casino\CasinoIsActivated;
 use App\Http\Middleware\Casino\CheckBlackjackPartyOwnerMiddleware;
 use App\Http\Middleware\Casino\CheckCasinoOwnershipMiddleware;
@@ -41,6 +42,7 @@ return Application::configure(basePath: dirname(__DIR__))
             "check_casino_ticket" => CheckTicketMiddleware::class,
             "check_blackjack_part_owner" => CheckBlackjackPartyOwnerMiddleware::class,
             "check_casino_ownership" => CheckCasinoOwnershipMiddleware::class,
+            "not_have_bank_account" => NotHaveBankAccountMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

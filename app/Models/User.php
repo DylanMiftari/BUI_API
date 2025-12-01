@@ -96,4 +96,8 @@ class User extends Authenticatable
     public function blackjackPartyForCasino(Casino $casino): BlackjackParty|null {
         return $this->blackjackParties()->where("casinoId", $casino->id)->first();
     }
+
+    public function bankAccountForBank(Bank $bank): BankAccount|null {
+        return $this->bankAccounts()->where("bankId", $bank->id)->first();
+    }
 }
