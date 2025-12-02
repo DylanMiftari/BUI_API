@@ -20,6 +20,8 @@ class BankAccountResource extends JsonResource
             "transferCost" => $this->transferCost,
             "money" => $this->money,
             "maxMoney" => $this->maxMoney,
+            "resource" => $this->resourceQuantity(),
+            "maxResource" => $this->maxResource,
             "isEnable" => $this->isEnable
         ];
     }
