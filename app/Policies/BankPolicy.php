@@ -39,4 +39,16 @@ class BankPolicy
         }
         return Response::allow();
     }
+
+    public function creditAccount(User $user, Bank $bank) {
+        $account = $this->bankService->getBankAccount($bank, $user);
+        $amountToCredit = request()->input('amount');
+        if($account->creditCapacity() < $amountToCredit) {
+            return Response::deny("Your account does not store the credit amount");
+        }
+        if($user->playerMoney < $amountToCredit) {
+            return Response::deny("You don't have enough money on you");
+        }
+        return Response::allow();
+    }
 }

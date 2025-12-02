@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Actions\Bank\CreateAccountAction;
+use App\Http\Actions\Bank\CreditAccountAction;
 use App\Http\Actions\Bank\DebitAccountAction;
+use App\Http\Requests\Bank\CreditAccountRequest;
 use App\Http\Requests\Bank\DebitAccountRequest;
 use App\Http\Resources\BankAccountResource;
 use App\Models\Bank;
@@ -45,6 +47,19 @@ class BankController extends Controller
     public function debitBankAccount(DebitAccountRequest $request, Bank $bank, DebitAccountAction $action)
     {
         $this->authorize("debitAccount", $bank);
+
+        $action->handle(
+            $this->bankService->getBankAccount($bank, Auth::user()),
+            Auth::user(),
+            $request->input("amount")
+        );
+
+        return response()->noContent();
+    }
+
+    public function creditBankAccount(CreditAccountRequest $request, Bank $bank, CreditAccountAction $action)
+    {
+        $this->authorize("creditAccount", $bank);
 
         $action->handle(
             $this->bankService->getBankAccount($bank, Auth::user()),

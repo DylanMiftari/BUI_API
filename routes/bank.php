@@ -12,6 +12,7 @@ Route::prefix("/bank")->middleware("auth:sanctum")->group(function () {
         Route::prefix("/account")->middleware("have_bank_account")->group(function () {
             Route::get("/", [BankController::class, "getBankAccount"]);
             Route::patch("/debit", [BankController::class, "debitBankAccount"]);
+            Route::patch("/credit", [BankController::class, "creditBankAccount"]);
         });
     });
 });
