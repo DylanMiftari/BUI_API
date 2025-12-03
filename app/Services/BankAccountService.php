@@ -66,4 +66,9 @@ class BankAccountService
         return $transaction;
     }
 
+    public function transferMoney(BankAccount $sourceAccount, BankAccount $destinationAccount, float $amount) {
+        $this->debitBankAccount($sourceAccount, $amount, "Money transfer to : ".$destinationAccount->user->pseudo);
+        $this->creditBankAccount($destinationAccount, $amount, "Money transfer from : ".$sourceAccount->user->pseudo);
+    }
+
 }

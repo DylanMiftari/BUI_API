@@ -36,3 +36,41 @@ user
     ...
 ]
 ```
+---
+### Debit account
+Remove money from bank account and place 
+money on the player  
+**Method :** PATCH  
+**Route :** /account/debit  
+**Payload :**
+```json
+{
+    "amount": 1000
+}
+```
+**Return :** 204 No Content
+---
+### Credit account
+Add money on bank account from player's money 
+**Method :** PATCH  
+**Route :** /account/credit  
+**Payload :**
+```json
+{
+    "amount": 1000
+}
+```
+**Return :** 204 No Content
+---
+### Transfer money between two accounts
+Transfer money between two accounts 
+**Method :** PATCH  
+**Route :** /account/transfer  
+**Payload :**
+```json
+{
+    "amount": 1000,
+    "destinationAccount": 1
+}
+```
+**Return :** 204 No Content

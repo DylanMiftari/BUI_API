@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Actions\Bank\CreateAccountAction;
 use App\Http\Actions\Bank\CreditAccountAction;
 use App\Http\Actions\Bank\DebitAccountAction;
+use App\Http\Actions\Bank\TransferMoneyAction;
 use App\Http\Requests\Bank\CreditAccountRequest;
 use App\Http\Requests\Bank\DebitAccountRequest;
+use App\Http\Requests\Bank\TransferMoneyRequest;
 use App\Http\Resources\BankAccountResource;
 use App\Models\Bank;
+use App\Models\BankAccount;
 use App\Services\BankService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
@@ -64,6 +67,19 @@ class BankController extends Controller
         $action->handle(
             $this->bankService->getBankAccount($bank, Auth::user()),
             Auth::user(),
+            $request->input("amount")
+        );
+
+        return response()->noContent();
+    }
+
+    public function transferMoney(TransferMoneyRequest $request, Bank $bank, TransferMoneyAction $action)
+    {
+        $this->authorize("transferMoney", $bank);
+
+        $action->handle(
+            $this->bankService->getBankAccount($bank, Auth::user()),
+            BankAccount::find($request->input("destinationAccount")),
             $request->input("amount")
         );
 

@@ -46,4 +46,8 @@ class BankAccount extends Model
     public function resourceQuantity(): float {
         return round($this->bankResourceAccount->sum("quantity"), 2);
     }
+
+    public function user(): HasOne {
+        return $this->hasOne(User::class, 'id', 'userId');
+    }
 }
