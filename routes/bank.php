@@ -14,6 +14,10 @@ Route::prefix("/bank")->middleware("auth:sanctum")->group(function () {
             Route::patch("/debit", [BankController::class, "debitBankAccount"]);
             Route::patch("/credit", [BankController::class, "creditBankAccount"]);
             Route::patch("/transfer", [BankController::class, "transferMoney"]);
+
+            Route::prefix("/loan")->middleware("check_company_level:3")->group(function () {
+                Route::post("/", [BankController::class, "createLoanRequest"]);
+            });
         });
     });
 });

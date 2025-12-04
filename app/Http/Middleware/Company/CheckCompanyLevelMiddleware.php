@@ -25,7 +25,10 @@ class CheckCompanyLevelMiddleware
     private function getCompanyLevel(Request $request): int {
         $company = $request->route()->parameter('company');
         if($company === null) {
-            $company = $request->route()->parameter('casino')->company;
+            $company = $request->route()->parameter('casino')->company ?? null;
+        }
+        if($company === null) {
+            $company = $request->route()->parameter('bank')->company ?? null;
         }
 
         return $company->companyLevel;
