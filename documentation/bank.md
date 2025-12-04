@@ -80,7 +80,7 @@ Transfer money between two accounts
 **Return :** 204 No Content
 
 ---
-### Create load request
+### Create loan request
 Create a loan request
 **Method :** POST  
 **Route :** /account/loan 
@@ -104,4 +104,25 @@ Create a loan request
     "rate": 2,
     "description": "To buy a mine"
 }
+```
+---
+
+### Get loan request
+Get loan requests of the user for a specific bank
+**Method :** GET  
+**Route :** /account/loan
+**Return :**
+```json
+[
+    {
+        "id": 2,
+        "status": "wait on bank",
+        "money": 45000,
+        "weeklypayment": 2500,
+        "alreadyPayed": null,
+        "rate": 2,
+        "description": "To buy a mine"
+    },
+    ...
+]
 ```

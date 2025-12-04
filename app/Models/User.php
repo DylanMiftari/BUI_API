@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
@@ -91,6 +92,10 @@ class User extends Authenticatable
         return $this->hasMany(BankAccount::class, "userId", "id");
     }
 
+    public function loanRequests(): HasMany {
+        return $this->hasMany(LoanRequest::class, "userId", "id");
+    }
+
 
 
     public function blackjackPartyForCasino(Casino $casino): BlackjackParty|null {
@@ -99,5 +104,9 @@ class User extends Authenticatable
 
     public function bankAccountForBank(Bank $bank): BankAccount|null {
         return $this->bankAccounts()->where("bankId", $bank->id)->first();
+    }
+
+    public function loanRequestForBank(Bank $bank): Collection {
+        return $this->loanRequests()->where("bankId", $bank->id)->get();
     }
 }

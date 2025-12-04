@@ -17,6 +17,7 @@ Route::prefix("/bank")->middleware("auth:sanctum")->group(function () {
 
             Route::prefix("/loan")->middleware("check_company_level:3")->group(function () {
                 Route::post("/", [BankController::class, "createLoanRequest"]);
+                Route::get("/", [BankController::class, "getLoanRequestsForClient"]);
             });
         });
     });

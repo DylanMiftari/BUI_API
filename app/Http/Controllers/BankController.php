@@ -102,4 +102,9 @@ class BankController extends Controller
 
         return new LoanRequestResource($loanRequest);
     }
+
+    public function getLoanRequestsForClient(Bank $bank)
+    {
+        return LoanRequestResource::collection(Auth::user()->loanRequestForBank($bank));
+    }
 }
