@@ -16,6 +16,7 @@ a bank account in the bank
     "isEnable": true
 }
 ```
+
 ---
 ### Get all bank accounts of the user
 This route return all bank accounts of the 
@@ -36,6 +37,7 @@ user
     ...
 ]
 ```
+
 ---
 ### Debit account
 Remove money from bank account and place 
@@ -49,6 +51,7 @@ money on the player
 }
 ```
 **Return :** 204 No Content
+
 ---
 ### Credit account
 Add money on bank account from player's money 
@@ -61,6 +64,7 @@ Add money on bank account from player's money
 }
 ```
 **Return :** 204 No Content
+
 ---
 ### Transfer money between two accounts
 Transfer money between two accounts 
@@ -74,3 +78,30 @@ Transfer money between two accounts
 }
 ```
 **Return :** 204 No Content
+
+---
+### Create load request
+Create a loan request
+**Method :** POST  
+**Route :** /account/loan 
+**Payload :**
+```json
+{
+    "money": 45000,
+    "weeklyPayment": 2500,
+    "description": "To buy a mine",
+    "rate": 2 <Optional>
+}
+```
+**Return :**
+```json
+{
+    "id": 2,
+    "status": "wait on bank",
+    "money": 45000,
+    "weeklypayment": 2500,
+    "alreadyPayed": null,
+    "rate": 2,
+    "description": "To buy a mine"
+}
+```
