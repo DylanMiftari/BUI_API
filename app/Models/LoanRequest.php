@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\LoanRequestStatus;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class LoanRequest extends Model
 {
@@ -23,4 +24,8 @@ class LoanRequest extends Model
     protected $casts = [
         'status' => LoanRequestStatus::class,
     ];
+
+    public function user(): HasOne {
+        return $this->hasOne(User::class, 'id', 'userId');
+    }
 }

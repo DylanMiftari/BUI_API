@@ -152,3 +152,28 @@ Get all bank accounts for your bank
     ...
 ]
 ```
+---
+
+### Get loans requests of your bank
+Get all loan requests for your bank
+**Method :** GET  
+**Route :** /{bank}/owner/loans
+**Return :**
+```json
+[
+    {
+        "id": 1,
+        "status": "wait on bank",
+        "money": 65000,
+        "weeklypayment": 2500,
+        "alreadyPayed": 0,
+        "rate": null,
+        "description": "To upgrade my company",
+        "user": {
+            "id": 1,
+            "pseudo": "pseudo"
+        }
+    },
+    ...
+]
+```

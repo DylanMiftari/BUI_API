@@ -23,6 +23,7 @@ Route::prefix("/bank")->middleware("auth:sanctum")->group(function () {
 
         Route::prefix("/owner")->middleware("check_bank_ownership")->group(function () {
             Route::get("/accounts", [BankController::class, "getAccountsForOwner"]);
+            Route::get("/loans", [BankController::class, "getLoanRequestsForOwner"]);
         });
     });
 });

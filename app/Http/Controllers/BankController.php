@@ -114,4 +114,10 @@ class BankController extends Controller
         With::add("user");
         return BankAccountResource::collection($bank->bankAccounts);
     }
+
+    public function getLoanRequestsForOwner(Bank $bank)
+    {
+        With::add("user");
+        return LoanRequestResource::collection($bank->loanRequests);
+    }
 }
