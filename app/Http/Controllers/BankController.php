@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\With;
 use App\Http\Actions\Bank\CreateAccountAction;
 use App\Http\Actions\Bank\CreateLoanRequestAction;
 use App\Http\Actions\Bank\CreditAccountAction;
@@ -106,5 +107,11 @@ class BankController extends Controller
     public function getLoanRequestsForClient(Bank $bank)
     {
         return LoanRequestResource::collection(Auth::user()->loanRequestForBank($bank));
+    }
+
+    public function getAccountsForOwner(Bank $bank)
+    {
+        With::add("user");
+        return BankAccountResource::collection($bank->bankAccounts);
     }
 }

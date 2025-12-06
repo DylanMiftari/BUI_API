@@ -43,7 +43,7 @@ user
 Remove money from bank account and place 
 money on the player  
 **Method :** PATCH  
-**Route :** /account/debit  
+**Route :** /{bank}/account/debit  
 **Payload :**
 ```json
 {
@@ -56,7 +56,7 @@ money on the player
 ### Credit account
 Add money on bank account from player's money 
 **Method :** PATCH  
-**Route :** /account/credit  
+**Route :** /{bank}/account/credit  
 **Payload :**
 ```json
 {
@@ -69,7 +69,7 @@ Add money on bank account from player's money
 ### Transfer money between two accounts
 Transfer money between two accounts 
 **Method :** PATCH  
-**Route :** /account/transfer  
+**Route :** /{bank}/account/transfer  
 **Payload :**
 ```json
 {
@@ -83,7 +83,7 @@ Transfer money between two accounts
 ### Create loan request
 Create a loan request
 **Method :** POST  
-**Route :** /account/loan 
+**Route :** /{bank}/account/loan 
 **Payload :**
 ```json
 {
@@ -110,7 +110,7 @@ Create a loan request
 ### Get loan request
 Get loan requests of the user for a specific bank
 **Method :** GET  
-**Route :** /account/loan
+**Route :** /{bank}/account/loan
 **Return :**
 ```json
 [
@@ -122,6 +122,32 @@ Get loan requests of the user for a specific bank
         "alreadyPayed": null,
         "rate": 2,
         "description": "To buy a mine"
+    },
+    ...
+]
+```
+---
+
+### Get bank accounts of your bank
+Get all bank accounts for your bank
+**Method :** GET  
+**Route :** /{bank}/owner/accounts
+**Return :**
+```json
+[
+    {
+        "id": 3,
+        "accountMaintenanceCost": 1000,
+        "transferCost": 0.02,
+        "money": 38980,
+        "maxMoney": 50000,
+        "resource": 3.4,
+        "maxResource": 10,
+        "isEnable": true,
+        "user": {
+            "id": 1,
+            "pseudo": "pseudo"
+        }
     },
     ...
 ]

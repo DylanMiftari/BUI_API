@@ -20,5 +20,9 @@ Route::prefix("/bank")->middleware("auth:sanctum")->group(function () {
                 Route::get("/", [BankController::class, "getLoanRequestsForClient"]);
             });
         });
+
+        Route::prefix("/owner")->middleware("check_bank_ownership")->group(function () {
+            Route::get("/accounts", [BankController::class, "getAccountsForOwner"]);
+        });
     });
 });
