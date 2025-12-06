@@ -7,15 +7,18 @@ use App\Http\Actions\Bank\CreateAccountAction;
 use App\Http\Actions\Bank\CreateLoanRequestAction;
 use App\Http\Actions\Bank\CreditAccountAction;
 use App\Http\Actions\Bank\DebitAccountAction;
+use App\Http\Actions\Bank\LoanRequest\DenyLoanRequestAction;
 use App\Http\Actions\Bank\TransferMoneyAction;
 use App\Http\Requests\Bank\CreateLoanRequestRequest;
 use App\Http\Requests\Bank\CreditAccountRequest;
 use App\Http\Requests\Bank\DebitAccountRequest;
+use App\Http\Requests\Bank\LoanRequest\DenyLoanRequestRequest;
 use App\Http\Requests\Bank\TransferMoneyRequest;
 use App\Http\Resources\BankAccountResource;
 use App\Http\Resources\LoanRequestResource;
 use App\Models\Bank;
 use App\Models\BankAccount;
+use App\Models\LoanRequest;
 use App\Services\BankService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
@@ -119,5 +122,19 @@ class BankController extends Controller
     {
         With::add("user");
         return LoanRequestResource::collection($bank->loanRequests);
+    }
+
+    /**
+     * Bank deny the loan request
+     * @param Bank $bank
+     * @param LoanRequest $loanRequest
+     * @return \Illuminate\Http\Response
+     */
+    public function denyLoanRequestFromBank(DenyLoanRequestRequest $request, Bank $bank, LoanRequest $loanRequest, DenyLoanRequestAction $action)
+    {
+        $this->authorize("denyFromBank", $loanRequest);
+        $action->handle($loanRequest, $request->input("reason"));
+
+        return response()->noContent();
     }
 }

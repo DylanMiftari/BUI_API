@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\Bank\CheckBankOwnershipMiddleware;
+use App\Http\Middleware\Bank\CheckLoanRequestOwnerBankMiddleware;
 use App\Http\Middleware\Bank\HaveAccountMiddleware;
 use App\Http\Middleware\Bank\NotHaveBankAccountMiddleware;
 use App\Http\Middleware\Casino\CasinoIsActivated;
@@ -47,6 +48,7 @@ return Application::configure(basePath: dirname(__DIR__))
             "not_have_bank_account" => NotHaveBankAccountMiddleware::class,
             "have_bank_account" => HaveAccountMiddleware::class,
             "check_bank_ownership" => CheckBankOwnershipMiddleware::class,
+            "check_loan_request_owner_bank" => CheckLoanRequestOwnerBankMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
