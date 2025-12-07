@@ -8,4 +8,5 @@ enum LoanRequestStatus: string
     case WAIT_ON_CLIENT = "wait on client";
     case DENY = "deny";
     case APPROVED = "approved";
+    case CANCELED = "canceled";
 }

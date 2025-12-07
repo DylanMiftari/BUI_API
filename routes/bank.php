@@ -21,6 +21,7 @@ Route::prefix("/bank")->middleware("auth:sanctum")->group(function () {
 
                 Route::prefix("/{loanRequest}")->middleware("check_loan_request_owner_user")->group(function () {
                     Route::patch("/", [BankController::class, "updateLoanRequestFromClient"]);
+                    Route::patch("/cancel", [BankController::class, "cancelLoanRequest"]);
                 });
             });
         });
