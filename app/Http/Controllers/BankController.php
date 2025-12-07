@@ -7,6 +7,7 @@ use App\Http\Actions\Bank\CreateAccountAction;
 use App\Http\Actions\Bank\CreateLoanRequestAction;
 use App\Http\Actions\Bank\CreditAccountAction;
 use App\Http\Actions\Bank\DebitAccountAction;
+use App\Http\Actions\Bank\LoanRequest\AcceptLoanRequestAction;
 use App\Http\Actions\Bank\LoanRequest\ApproveLoanRequestAction;
 use App\Http\Actions\Bank\LoanRequest\CancelLoanRequestAction;
 use App\Http\Actions\Bank\LoanRequest\DenyLoanRequestAction;
@@ -179,6 +180,14 @@ class BankController extends Controller
     {
         $this->authorize("cancelLoanRequest", $loanRequest);
         $action->handle($loanRequest, $request->input("reason"));
+
+        return response()->noContent();
+    }
+
+    public function acceptLoanRequest(Bank $bank, LoanRequest $loanRequest, AcceptLoanRequestAction $action)
+    {
+        $this->authorize("acceptLoanRequest", $loanRequest);
+        $action->handle($loanRequest, Auth::user());
 
         return response()->noContent();
     }

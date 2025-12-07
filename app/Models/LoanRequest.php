@@ -28,4 +28,8 @@ class LoanRequest extends Model
     public function user(): HasOne {
         return $this->hasOne(User::class, 'id', 'userId');
     }
+
+    public function bank(): HasOne {
+        return $this->hasOne(Bank::class, 'id', 'bankId');
+    }
 }

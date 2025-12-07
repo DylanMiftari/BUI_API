@@ -9,4 +9,6 @@ enum LoanRequestStatus: string
     case DENY = "deny";
     case APPROVED = "approved";
     case CANCELED = "canceled";
+    case PAYING = "paying";
+    case PAYED = "payed";
 }
