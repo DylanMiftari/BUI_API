@@ -7,6 +7,7 @@ use App\Http\Actions\Bank\CreateAccountAction;
 use App\Http\Actions\Bank\CreateLoanRequestAction;
 use App\Http\Actions\Bank\CreditAccountAction;
 use App\Http\Actions\Bank\DebitAccountAction;
+use App\Http\Actions\Bank\LoanRequest\ApproveLoanRequestAction;
 use App\Http\Actions\Bank\LoanRequest\DenyLoanRequestAction;
 use App\Http\Actions\Bank\LoanRequest\UpdateLoanRequestAction;
 use App\Http\Actions\Bank\TransferMoneyAction;
@@ -148,6 +149,14 @@ class BankController extends Controller
             $request,
             true
         );
+
+        return response()->noContent();
+    }
+
+    public function approveLoanRequestFromBank(Bank $bank, LoanRequest $loanRequest, ApproveLoanRequestAction $action)
+    {
+        $this->authorize("approveLoanRequestFromBank", $loanRequest);
+        $action->handle($loanRequest);
 
         return response()->noContent();
     }
