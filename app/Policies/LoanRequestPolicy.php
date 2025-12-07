@@ -34,4 +34,11 @@ class LoanRequestPolicy
         return Response::allow();
     }
 
+    public function updateLoanRequestFromClient(User $user, LoanRequest $loanRequest) {
+        if($loanRequest->status != LoanRequestStatus::WAIT_ON_CLIENT) {
+            return Response::deny("Loan request is not waiting on client");
+        }
+        return Response::allow();
+    }
+
 }

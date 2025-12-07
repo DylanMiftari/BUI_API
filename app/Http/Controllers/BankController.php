@@ -160,4 +160,16 @@ class BankController extends Controller
 
         return response()->noContent();
     }
+
+    public function updateLoanRequestFromClient(UpdateLoanRequestRequest $request, Bank $bank, LoanRequest $loanRequest, UpdateLoanRequestAction $action)
+    {
+        $this->authorize("updateLoanRequestFromClient", $loanRequest);
+        $action->handle(
+            $loanRequest,
+            $request,
+            false
+        );
+
+        return response()->noContent();
+    }
 }
