@@ -27,6 +27,7 @@ Route::prefix("/bank")->middleware("auth:sanctum")->group(function () {
 
             Route::prefix("/loans/{loanRequest}")->middleware("check_loan_request_owner_bank")->group(function () {
                 Route::patch("deny", [BankController::class, "denyLoanRequestFromBank"]);
+                Route::patch("/", [BankController::class, "updateLoanRequestFromBank"]);
             });
         });
     });

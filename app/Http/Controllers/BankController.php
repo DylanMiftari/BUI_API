@@ -8,11 +8,13 @@ use App\Http\Actions\Bank\CreateLoanRequestAction;
 use App\Http\Actions\Bank\CreditAccountAction;
 use App\Http\Actions\Bank\DebitAccountAction;
 use App\Http\Actions\Bank\LoanRequest\DenyLoanRequestAction;
+use App\Http\Actions\Bank\LoanRequest\UpdateLoanRequestAction;
 use App\Http\Actions\Bank\TransferMoneyAction;
 use App\Http\Requests\Bank\CreateLoanRequestRequest;
 use App\Http\Requests\Bank\CreditAccountRequest;
 use App\Http\Requests\Bank\DebitAccountRequest;
 use App\Http\Requests\Bank\LoanRequest\DenyLoanRequestRequest;
+use App\Http\Requests\Bank\LoanRequest\UpdateLoanRequestRequest;
 use App\Http\Requests\Bank\TransferMoneyRequest;
 use App\Http\Resources\BankAccountResource;
 use App\Http\Resources\LoanRequestResource;
@@ -134,6 +136,18 @@ class BankController extends Controller
     {
         $this->authorize("denyFromBank", $loanRequest);
         $action->handle($loanRequest, $request->input("reason"));
+
+        return response()->noContent();
+    }
+
+    public function updateLoanRequestFromBank(UpdateLoanRequestRequest $request, Bank $bank, LoanRequest $loanRequest, UpdateLoanRequestAction $action)
+    {
+        $this->authorize("updateLoanRequestFromBank", $loanRequest);
+        $action->handle(
+            $loanRequest,
+            $request,
+            true
+        );
 
         return response()->noContent();
     }

@@ -17,4 +17,11 @@ class LoanRequestPolicy
         return Response::allow();
     }
 
+    public function updateLoanRequestFromBank(User $user, LoanRequest $loanRequest) {
+        if($loanRequest->status != LoanRequestStatus::WAIT_ON_BANK) {
+            return Response::deny("Loan request is not waiting on bank");
+        }
+        return Response::allow();
+    }
+
 }
