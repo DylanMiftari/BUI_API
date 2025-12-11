@@ -24,7 +24,15 @@ class BankAccountResource extends JsonResource
             "resource" => $this->resourceQuantity(),
             "maxResource" => $this->maxResource,
             "isEnable" => $this->isEnable,
-            "user" => $this->when(With::has("user"), new UserResource($this->user))
+            "user" => $this->when(With::has("user"), new UserResource($this->user)),
+            "company" => new CompanyResource($this->bank->company),
+            "bankId" => $this->bankId,
+            $this->mergeWhen(With::has("details"), [
+                "userHand" => [
+                    "money" => $this->user->playerMoney,
+                    "resource" => $this->user->resourceQuantity()
+                ]
+            ])
         ];
     }
 }

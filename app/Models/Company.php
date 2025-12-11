@@ -41,4 +41,25 @@ class Company extends Model
     public function factory(): HasOne {
         return $this->hasOne(Factory::class, "companyId", "id");
     }
+
+    public function getSubCompanyId(): int {
+        if($this->bank) {
+            return $this->bank->id;
+        }
+        if($this->casino) {
+            return $this->casino->id;
+        }
+        if($this->mafia) {
+            return $this->mafia->id;
+        }
+        if($this->estate) {
+            return $this->estate->id;
+        }
+        if($this->factory) {
+            return $this->factory->id;
+        }
+        if($this->security) {
+            return $this->security->id;
+        }
+    }
 }

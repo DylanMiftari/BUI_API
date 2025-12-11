@@ -28,6 +28,7 @@ class UserResource extends JsonResource
                 "resourceSum" => $this->userResources->sum("quantity"),
                 "cityName" => $this->city->name,
                 "casinoTicketsCount" => $this->casinoTickets()->count(),
+                "activeAccount" => $this->bankAccounts()->count()
             ])
         ];
     }
