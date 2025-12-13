@@ -18,6 +18,7 @@ class LoanRequestResource extends JsonResource
             "alreadyPayed" => $this->alreadyPayed,
             "rate" => $this->rate,
             "description" => $this->description,
+            "bankId" => $this->bankId,
             "user" => $this->when(With::has("user"), new UserResource($this->user))
         ];
     }
