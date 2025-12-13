@@ -21,6 +21,7 @@ use App\Http\Requests\Bank\LoanRequest\DenyLoanRequestRequest;
 use App\Http\Requests\Bank\LoanRequest\UpdateLoanRequestRequest;
 use App\Http\Requests\Bank\TransferMoneyRequest;
 use App\Http\Resources\BankAccountResource;
+use App\Http\Resources\BankAccountTransactionResource;
 use App\Http\Resources\BankResource;
 use App\Http\Resources\LoanRequestResource;
 use App\Models\Bank;
@@ -197,5 +198,13 @@ class BankController extends Controller
     public function getBankInfo(Bank $bank)
     {
         return new BankResource($bank);
+    }
+
+    public function getTransactions(Bank $bank)
+    {
+        $bankAccount = $this->bankService->getBankAccount($bank, Auth::user());
+        return BankAccountTransactionResource::collection(
+            $bankAccount->transactions()->orderByDesc("created_at")->limit(100)->get()
+        );
     }
 }

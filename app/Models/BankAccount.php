@@ -36,6 +36,10 @@ class BankAccount extends Model
         return $this->hasMany(BankResourceAccount::class, 'bankAccountId', 'id');
     }
 
+    public function transactions(): HasMany {
+        return $this->hasMany(BankAccountTransaction::class, 'bankAccountId', 'id');
+    }
+
     public function creditCapacity(): float {
         return round($this->maxMoney - $this->money, 2);
     }
