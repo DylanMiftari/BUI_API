@@ -22,7 +22,7 @@ class Money {
         $bankAccountService = app(BankAccountService::class);
         $accountWithMaxTransfer = $bankAccountService->getBankAccountWithHigherTransferRate(Auth::user());
         if($accountWithMaxTransfer) {
-            $price = round($price + $price * $accountWithMaxTransfer->transferCost, 2);
+            $price = round($price + $price * $accountWithMaxTransfer->transferCost / 100, 2);
         }
         if(!Auth::check()) {
             throw new AuthenticationException();
