@@ -6,6 +6,7 @@ use App\Helpers\With;
 use App\Http\Actions\Company\CreateCompanyAction;
 use App\Http\Actions\Company\UpgradeCompanyAction;
 use App\Http\Requests\Company\CreateCompanyRequest;
+use App\Http\Resources\BankResource;
 use App\Http\Resources\CasinoResource;
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
@@ -44,6 +45,8 @@ class CompanyController extends Controller
         switch($company->companyType) {
             case "casino":
                 return new CasinoResource($company->casino);
+            case "bank":
+                return new BankResource($company->bank);
         }
     }
 }

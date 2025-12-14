@@ -22,6 +22,7 @@ use App\Http\Requests\Bank\LoanRequest\UpdateLoanRequestRequest;
 use App\Http\Requests\Bank\TransferMoneyRequest;
 use App\Http\Resources\BankAccountResource;
 use App\Http\Resources\BankAccountTransactionResource;
+use App\Http\Resources\BankDashboardResource;
 use App\Http\Resources\BankResource;
 use App\Http\Resources\LoanRequestResource;
 use App\Models\Bank;
@@ -206,5 +207,10 @@ class BankController extends Controller
         return BankAccountTransactionResource::collection(
             $bankAccount->transactions()->orderByDesc("created_at")->limit(100)->get()
         );
+    }
+
+    public function getDashboardData(Bank $bank)
+    {
+        return new BankDashboardResource($bank);
     }
 }
