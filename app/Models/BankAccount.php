@@ -44,7 +44,7 @@ class BankAccount extends Model
         return round($this->maxMoney - $this->money, 2);
     }
     public function debitCapacity(): float {
-        return round(100 * $this->money / (100 + 100 * $this->transferCost), 2);
+        return round(100 * $this->money / (100 + $this->transferCost), 2);
     }
 
     public function resourceQuantity(): float {

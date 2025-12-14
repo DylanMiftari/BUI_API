@@ -40,7 +40,7 @@ class BankAccountService
 
     public function debitBankAccount(BankAccount $account, float $price, string $description = "") {
         $company = $account->bank->company;
-        $transferCost = round($account->transferCost * $price, 2);
+        $transferCost = round($account->transferCost * $price / 100, 2);
 
         $company->moneyInSafe = round($company->moneyInSafe - $price, 2);
         if($company->moneyInSafe <= 0) {
