@@ -20,6 +20,7 @@ use App\Http\Requests\Bank\LoanRequest\CancelLoanRequestRequest;
 use App\Http\Requests\Bank\LoanRequest\DenyLoanRequestRequest;
 use App\Http\Requests\Bank\LoanRequest\UpdateLoanRequestRequest;
 use App\Http\Requests\Bank\TransferMoneyRequest;
+use App\Http\Requests\Bank\UpdateBankConfigRequest;
 use App\Http\Resources\BankAccountResource;
 use App\Http\Resources\BankAccountTransactionResource;
 use App\Http\Resources\BankDashboardResource;
@@ -212,5 +213,23 @@ class BankController extends Controller
     public function getDashboardData(Bank $bank)
     {
         return new BankDashboardResource($bank);
+    }
+
+    public function updateBankConfig(UpdateBankConfigRequest $request, Bank $bank)
+    {
+        if($request->has("accountMaintenanceCost")) {
+            $bank->accountMaintenanceCost = $request->input("accountMaintenanceCost");
+        }
+        if($request->has("transferCost")) {
+            $bank->transferCost = $request->input("transferCost");
+        }
+        if($request->has("maxAccountMoney")) {
+            $bank->maxAccountMoney = $request->input("maxAccountMoney");
+        }
+        if($request->has("maxAccountResource")) {
+            $bank->maxAccountResource = $request->input("maxAccountResource");
+        }
+        $bank->save();
+        return response()->noContent();
     }
 }

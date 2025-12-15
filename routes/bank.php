@@ -34,6 +34,7 @@ Route::prefix("/bank")->middleware("auth:sanctum")->group(function () {
             Route::get("/dashboard", [BankController::class, "getDashboardData"]);
             Route::get("/accounts", [BankController::class, "getAccountsForOwner"]);
             Route::get("/loans", [BankController::class, "getLoanRequestsForOwner"]);
+            Route::patch("/config", [BankController::class, "updateBankConfig"]);
 
             Route::prefix("/loans/{loanRequest}")->middleware("check_loan_request_owner_bank")->group(function () {
                 Route::patch("deny", [BankController::class, "denyLoanRequestFromBank"]);
