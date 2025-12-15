@@ -26,7 +26,13 @@ class BankDashboardResource extends JsonResource
                 "nbLoans" => $this->loanRequests()->count(),
                 "companyId" => $this->company->id,
             ],
-            "bankLevel" => BankLevel::all()
+            "bankLevel" => BankLevel::all(),
+            "config" => [
+                "accountMaintenanceCost" => $this->accountMaintenanceCost,
+                "transferCost" => $this->transferCost,
+                "maxAccountMoney" => $this->maxAccountMoney,
+                "maxAccountResource" => $this->maxAccountResource
+            ]
         ];
     }
 }
