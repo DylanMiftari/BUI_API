@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\Bank\CheckBankAccountOwnerBank;
 use App\Http\Middleware\Bank\CheckBankOwnershipMiddleware;
 use App\Http\Middleware\Bank\CheckLoanRequestOwnerBankMiddleware;
 use App\Http\Middleware\Bank\CheckLoanRequestOwnerClient;
@@ -50,7 +51,8 @@ return Application::configure(basePath: dirname(__DIR__))
             "have_bank_account" => HaveAccountMiddleware::class,
             "check_bank_ownership" => CheckBankOwnershipMiddleware::class,
             "check_loan_request_owner_bank" => CheckLoanRequestOwnerBankMiddleware::class,
-            "check_loan_request_owner_user" => CheckLoanRequestOwnerClient::class
+            "check_loan_request_owner_user" => CheckLoanRequestOwnerClient::class,
+            "check_bank_account_owner_bank" => CheckBankAccountOwnerBank::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

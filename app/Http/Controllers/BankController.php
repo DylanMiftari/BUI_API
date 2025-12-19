@@ -232,4 +232,29 @@ class BankController extends Controller
         $bank->save();
         return response()->noContent();
     }
+
+    public function getBankAccountForOwner(Bank $bank, BankAccount $bankAccount)
+    {
+        With::add("details");
+        With::add("user");
+        return new BankAccountResource($bankAccount);
+    }
+
+    public function updateBankAccountForOwner(UpdateBankConfigRequest $request, Bank $bank, BankAccount $bankAccount)
+    {
+        if($request->has("accountMaintenanceCost")) {
+            $bankAccount->accountMaintenanceCost = $request->input("accountMaintenanceCost");
+        }
+        if($request->has("transferCost")) {
+            $bankAccount->transferCost = $request->input("transferCost");
+        }
+        if($request->has("maxAccountMoney")) {
+            $bankAccount->maxMoney = $request->input("maxAccountMoney");
+        }
+        if($request->has("maxAccountResource")) {
+            $bankAccount->maxResource = $request->input("maxAccountResource");
+        }
+        $bankAccount->save();
+        return response()->noContent();
+    }
 }

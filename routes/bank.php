@@ -41,6 +41,10 @@ Route::prefix("/bank")->middleware("auth:sanctum")->group(function () {
                 Route::patch("/", [BankController::class, "updateLoanRequestFromBank"]);
                 Route::patch("/approve", [BankController::class, "approveLoanRequestFromBank"]);
             });
+            Route::prefix("/accounts/{bankAccount}")->middleware("check_bank_account_owner_bank")->group(function () {
+                Route::get("/", [BankController::class, "getBankAccountForOwner"]);
+                Route::patch("/", [BankController::class, "updateBankAccountForOwner"]);
+            });
         });
     });
 });
