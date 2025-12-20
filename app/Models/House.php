@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class House extends Model
 {
@@ -12,4 +13,8 @@ class House extends Model
         "houseTypeId",
         "cityId"
     ];
+
+    public function home(): HasOne {
+        return $this->hasOne(Home::class, "houseId", "id");
+    }
 }

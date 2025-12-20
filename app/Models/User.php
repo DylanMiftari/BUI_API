@@ -96,6 +96,10 @@ class User extends Authenticatable
         return $this->hasMany(LoanRequest::class, "userId", "id");
     }
 
+    public function homes(): HasMany {
+        return $this->hasMany(Home::class, "userId", "id");
+    }
+
 
 
     public function blackjackPartyForCasino(Casino $casino): BlackjackParty|null {
