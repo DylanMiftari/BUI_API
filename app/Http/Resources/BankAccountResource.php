@@ -33,7 +33,8 @@ class BankAccountResource extends JsonResource
                     "resource" => $this->user->resourceQuantity()
                 ],
                 "transactions" => BankAccountTransactionResource::collection($this->transactions()->orderByDesc("created_at")->limit(30)->get()),
-            ])
+            ]),
+            "resources" => $this->when(With::has("resources"), $this->resource->resources())
         ];
     }
 }

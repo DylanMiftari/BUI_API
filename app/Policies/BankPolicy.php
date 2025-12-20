@@ -7,6 +7,8 @@ use App\Models\BankAccount;
 use App\Models\User;
 use App\Services\BankService;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class BankPolicy
 {
@@ -63,6 +65,24 @@ class BankPolicy
         }
         if($destinationAccount->creditCapacity() < $amountToTransfer) {
             return Response::deny("Destination account can not store the money");
+        }
+        return Response::allow();
+    }
+
+    public function depositResource(User $user, Bank $bank) {
+        $bankAccount = $this->bankService->getBankAccount($bank, $user);
+        $resourceToAddQuantity = array_sum(Arr::pluck(request()->input('resources'), "quantity"));
+        if($bankAccount->resourcesCapacity() < $resourceToAddQuantity) {
+            return Response::deny("Your account can not store enough resources");
+        }
+        return Response::allow();
+    }
+
+    public function withdrawResource(User $user, Bank $bank) {
+        $resourceToAddQuantity = array_sum(Arr::pluck(request()->input('resources'), "quantity"));
+        $userResourceCapacity = round(config("user.max_player_resource") - Auth::user()->resourceQuantity(), 2);
+        if($userResourceCapacity < $resourceToAddQuantity) {
+            return Response::deny("You can not store enough resources");
         }
         return Response::allow();
     }

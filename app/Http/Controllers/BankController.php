@@ -16,6 +16,7 @@ use App\Http\Actions\Bank\TransferMoneyAction;
 use App\Http\Requests\Bank\CreateLoanRequestRequest;
 use App\Http\Requests\Bank\CreditAccountRequest;
 use App\Http\Requests\Bank\DebitAccountRequest;
+use App\Http\Requests\Bank\DepositWithDrawResourceRequest;
 use App\Http\Requests\Bank\LoanRequest\CancelLoanRequestRequest;
 use App\Http\Requests\Bank\LoanRequest\DenyLoanRequestRequest;
 use App\Http\Requests\Bank\LoanRequest\UpdateLoanRequestRequest;
@@ -29,6 +30,7 @@ use App\Http\Resources\LoanRequestResource;
 use App\Models\Bank;
 use App\Models\BankAccount;
 use App\Models\LoanRequest;
+use App\Services\BankAccountService;
 use App\Services\BankService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
@@ -39,7 +41,8 @@ class BankController extends Controller
     use AuthorizesRequests;
 
     public function __construct(
-        private BankService $bankService
+        private BankService $bankService,
+        private BankAccountService $bankAccountService,
     )
     {
     }
@@ -255,6 +258,26 @@ class BankController extends Controller
             $bankAccount->maxResource = $request->input("maxAccountResource");
         }
         $bankAccount->save();
+        return response()->noContent();
+    }
+
+    public function depositResources(DepositWithDrawResourceRequest $request, Bank $bank)
+    {
+        $this->authorize("depositResource", $bank);
+
+        $bankAccount = $this->bankService->getBankAccount($bank, Auth::user());
+        $this->bankAccountService->depositResources($request, $bankAccount);
+
+        return response()->noContent();
+    }
+
+    public function withdrawResources(DepositWithDrawResourceRequest $request, Bank $bank)
+    {
+        $this->authorize("withdrawResource", $bank);
+
+        $bankAccount = $this->bankService->getBankAccount($bank, Auth::user());
+        $this->bankAccountService->withDrawResource($request, $bankAccount);
+
         return response()->noContent();
     }
 }

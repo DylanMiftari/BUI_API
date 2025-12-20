@@ -16,6 +16,9 @@ Route::prefix("/bank")->middleware("auth:sanctum")->group(function () {
             Route::patch("/credit", [BankController::class, "creditBankAccount"]);
             Route::patch("/transfer", [BankController::class, "transferMoney"]);
 
+            Route::patch("/resource/deposit", [BankController::class, "depositResources"]);
+            Route::patch("/resource/withdraw", [BankController::class, "withdrawResources"]);
+
             Route::prefix("/loan")->middleware("check_company_level:3")->group(function () {
                 Route::post("/", [BankController::class, "createLoanRequest"]);
                 Route::get("/", [BankController::class, "getLoanRequestsForClient"]);

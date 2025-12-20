@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Resources\ResourceResource;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -49,6 +50,27 @@ class BankAccount extends Model
 
     public function resourceQuantity(): float {
         return round($this->bankResourceAccount->sum("quantity"), 2);
+    }
+
+    public function resources(): array {
+        $bankResourceAccounts = $this->bankResourceAccount;
+        $bankResourceAccountsId = $bankResourceAccounts->pluck("resourceId");
+        $resources = Resource::whereIn("id", $bankResourceAccountsId)->get();
+
+        $res = [];
+        foreach($bankResourceAccounts as $bankResourceAccount) {
+            $resource = $resources->where("id", $bankResourceAccount->resourceId)->first();
+            array_push($res, [
+                "resource" => new ResourceResource($resource),
+                "quantity" => $bankResourceAccount->quantity,
+            ]);
+        }
+        return $res;
+    }
+
+    public function resourcesCapacity(): float {
+        $totalResources = $this->bankResourceAccount()->sum("quantity");
+        return round($this->maxResource - $totalResources, 2);
     }
 
     public function user(): HasOne {

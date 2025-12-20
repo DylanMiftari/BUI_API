@@ -14,6 +14,12 @@ class UserResource extends Model
     protected $table = "userresource";
     public $timestamps = false;
 
+    protected $fillable = [
+        "userId",
+        "resourceId",
+        "quantity"
+    ];
+
     public function resource(): HasOne {
         return $this->hasOne(Resource::class, "id", "resourceId");
     }
