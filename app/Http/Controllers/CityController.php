@@ -36,4 +36,13 @@ class CityController extends Controller
 
         return CompanyResource::collection($companies);
     }
+
+    public function getPossibleTravels()
+    {
+        With::add("travel");
+        return [
+            "currentCity" => new CityResource(Auth::user()->city),
+            "otherCities" => CityResource::collection($this->cityService->getPossibleTravels(Auth::user()->city))
+        ];
+    }
 }

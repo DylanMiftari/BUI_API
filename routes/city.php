@@ -9,4 +9,7 @@ Route::prefix("/city")->middleware(["auth:sanctum", "in_travel"])->group(functio
         Route::get("/", [CityController::class, "myCity"]);
         Route::get("/company", [CityController::class, "myCityCompanies"]);
     });
+    Route::prefix("/travel")->group(function() {
+        Route::get("/", [CityController::class, "getPossibleTravels"]);
+    });
 });

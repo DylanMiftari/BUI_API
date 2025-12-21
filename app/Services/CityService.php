@@ -21,4 +21,14 @@ class CityService {
         return $query->get();
     }
 
+    public function getPossibleTravels(City $city) {
+        $cities = City::whereNot("id", $city->id)->get();
+        return $cities;
+    }
+
+    public function getTravelDuration(City $fromCity, City $destCity): int {
+        return config("city.travel_base_duration_days") +
+            abs($destCity->rank - $fromCity->rank) * config("city.travel_duration_by_rank_days");
+    }
+
 }
