@@ -11,5 +11,6 @@ Route::prefix("/city")->middleware(["auth:sanctum", "in_travel"])->group(functio
     });
     Route::prefix("/travel")->group(function() {
         Route::get("/", [CityController::class, "getPossibleTravels"]);
+        Route::post("/", [CityController::class, "makeTravel"]);
     });
 });

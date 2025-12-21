@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Money;
 use App\Helpers\Paginate;
 use App\Helpers\With;
+use App\Http\Actions\City\MakeTravelAction;
 use App\Http\Requests\City\GetCityCompaniesRequest;
+use App\Http\Requests\City\MakeTravelRequest;
 use App\Http\Resources\CityResource;
 use App\Http\Resources\CompanyResource;
 use App\Models\City;
@@ -44,5 +47,15 @@ class CityController extends Controller
             "currentCity" => new CityResource(Auth::user()->city),
             "otherCities" => CityResource::collection($this->cityService->getPossibleTravels(Auth::user()->city))
         ];
+    }
+
+    public function makeTravel(MakeTravelRequest $request, MakeTravelAction $action)
+    {
+        Money::check(config("city.travel_price"));
+        $destination = City::find($request->input("destination"));
+
+        $action->handle($destination);
+
+        return response()->noContent();
     }
 }

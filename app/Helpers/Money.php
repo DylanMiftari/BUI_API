@@ -47,7 +47,7 @@ class Money {
         $payed = 0;
         $left = $price;
         foreach($allAccounts as $account) {
-            $payedForAccount = min($account->debitCapacity(), $price);
+            $payedForAccount = min($account->debitCapacity(), $left);
             if($payedForAccount > 0) {
                 $bankAccountService->debitBankAccount($account, $payedForAccount, $description);
                 $payed = round($payed + $payedForAccount, 2);
