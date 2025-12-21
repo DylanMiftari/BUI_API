@@ -113,4 +113,10 @@ class User extends Authenticatable
     public function loanRequestForBank(Bank $bank): Collection {
         return $this->loanRequests()->where("bankId", $bank->id)->get();
     }
+
+    public function homesInTheCity(): Collection {
+        return $this->homes()
+            ->whereHas("house", fn($q) => $q->where("cityId", $this->city_id))
+            ->get();
+    }
 }
