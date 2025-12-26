@@ -32,6 +32,7 @@ return Application::configure(basePath: dirname(__DIR__))
             __DIR__.'/../routes/casino.php',
             __DIR__.'/../routes/bank.php',
             __DIR__.'/../routes/home.php',
+            __DIR__.'/../routes/mafia.php',
         ],
         commands: __DIR__.'/../routes/console.php',
         health: '/up',

@@ -19,7 +19,8 @@ class CompanyService {
             $company = new Company([
                 "name" => $companyName,
                 "companyType" => $companyType,
-                "userId" => $user->id
+                "userId" => $user->id,
+                "cityId" => $user->city_id,
             ]);
             $company->save();
 

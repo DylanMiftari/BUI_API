@@ -11,7 +11,7 @@ class Company extends Model
     public const MAX_LEVEL = 6;
 
     protected $table = "company";
-    protected $fillable = ["name", "companyType", "userId"];
+    protected $fillable = ["name", "companyType", "userId", "cityId"];
 
 
     public function user(): HasOne {
