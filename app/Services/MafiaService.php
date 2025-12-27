@@ -7,11 +7,18 @@ use App\Models\Company;
 use App\Models\Home;
 use App\Models\Mafia;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class MafiaService
 {
     public const TARGET_LIMIT = 5;
+
+    public function generateSeed(Mafia $mafia, User $user): string {
+        $day = Carbon::now()->format('Ymd');
+        return strval($mafia->id).strval($user->id).$day;
+    }
+
     public function getTargetPlayer(Mafia $mafia, string $seed) {
         return User::where("city_id", $mafia->company->cityId)
             ->inRandomOrder($seed)->limit(self::TARGET_LIMIT)->get();

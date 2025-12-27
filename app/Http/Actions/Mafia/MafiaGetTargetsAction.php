@@ -24,8 +24,7 @@ class MafiaGetTargetsAction
     }
 
     public function handle(Mafia $mafia, User $user) {
-        $day = Carbon::now()->format('Ymd');
-        $seed = strval($mafia->id).strval($user->id).$day;
+        $seed = $this->mafiaService->generateSeed($mafia, $user);
         With::add("mafia");
 
         $res = [
