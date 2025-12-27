@@ -2,11 +2,10 @@
 
 namespace App\Http\Resources;
 
-use App\Helpers\With;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class HomeResource extends JsonResource
+class MinimalBankAccountResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,8 +16,7 @@ class HomeResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "house" => new HouseResource($this->house),
-            "moneyInSafe" => $this->when(!With::has("mafia"), $this->moneyInSafe)
+            "company" => new CompanyResource($this->bank->company),
         ];
     }
 }
