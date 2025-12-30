@@ -18,7 +18,8 @@ class MafiaContractResource extends JsonResource
             "id" => $this->id,
             "targetType" => $this->targetType,
             "targetId" => $this->targetId,
-            "robState" => $this->robState
+            "robState" => $this->robState,
+            "target" => $this->targetResource()
         ];
     }
 }

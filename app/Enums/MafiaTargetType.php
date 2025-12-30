@@ -11,6 +11,6 @@ enum MafiaTargetType: string
     case CYBERATTACK = "cyberattack";
     case USER_DRONE = "userDrone";
     case HOME_DRONE = "homeDrone";
-    case SHOPLIFTING = "shopping";
+    case SHOPLIFTING = "shoplifting";
     case PHISHING = "phishing";
 }

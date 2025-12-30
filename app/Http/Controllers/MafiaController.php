@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\MafiaTargetType;
 use App\Http\Actions\Mafia\CreateMafiaContractAction;
+use App\Http\Actions\Mafia\GetMafiaContractFromClient;
 use App\Http\Actions\Mafia\MafiaGetTargetsAction;
 use App\Http\Requests\Mafia\CreateContractRequest;
 use App\Http\Resources\MafiaContractResource;
@@ -40,5 +41,14 @@ class MafiaController extends Controller
         );
 
         return new MafiaContractResource($contract);
+    }
+
+    public function getContractForClient(Mafia $mafia, GetMafiaContractFromClient $action)
+    {
+        $contract = $action->handle($mafia, Auth::user());
+        if($contract){
+            return new MafiaContractResource($contract);
+        }
+        return null;
     }
 }

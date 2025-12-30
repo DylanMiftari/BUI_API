@@ -9,8 +9,9 @@ Route::prefix("mafia")->middleware(["auth:sanctum", "in_travel"])->group(functio
         Route::get("/", [MafiaController::class, "getMafiaForClient"]);
         Route::get("/targets", [MafiaController::class, "getTargets"]);
 
-        Route::prefix("contract")->middleware("user_have_already_contract")->group(function () {
-            Route::post("/", [MafiaController::class, "createContract"]);
+        Route::prefix("contract")->group(function () {
+            Route::post("/", [MafiaController::class, "createContract"])->middleware("user_have_already_contract");
+            Route::get("/", [MafiaController::class, "getContractForClient"]);
         });
     });
 });
