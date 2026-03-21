@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\MafiaContractStatus;
 use App\Helpers\Money;
 use App\Helpers\With;
 use Illuminate\Http\Request;
@@ -31,7 +32,8 @@ class UserResource extends JsonResource
                 "cityName" => $this->city->name,
                 "casinoTicketsCount" => $this->casinoTickets()->count(),
                 "activeAccount" => $this->bankAccounts()->count(),
-                "homeCount" => $this->homes()->whereHas("house", fn($q) => $q->where("cityId", $this->city_id))->count()
+                "homeCount" => $this->homes()->whereHas("house", fn($q) => $q->where("cityId", $this->city_id))->count(),
+                "activeMafiaContract" => $this->mafiaContracts()->where("robState", "!=", MafiaContractStatus::FINISHED)->count(),
             ])
         ];
     }

@@ -100,6 +100,10 @@ class User extends Authenticatable
         return $this->hasMany(Home::class, "userId", "id");
     }
 
+    public function mafiaContracts(): HasMany {
+        return $this->hasMany(MafiaContract::class, "userId", "id");
+    }
+
 
 
     public function blackjackPartyForCasino(Casino $casino): BlackjackParty|null {
