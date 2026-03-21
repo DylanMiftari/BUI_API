@@ -9,6 +9,7 @@ use App\Http\Resources\CompanyResource;
 use App\Http\Resources\HomeResource;
 use App\Http\Resources\MinimalBankAccountResource;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Resources\UserResource;
 
 class MafiaContract extends Model
 {
