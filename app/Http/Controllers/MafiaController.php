@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\MafiaTargetType;
+use App\Helpers\With;
 use App\Http\Actions\Mafia\CreateMafiaContractAction;
 use App\Http\Actions\Mafia\GetMafiaContractFromClient;
 use App\Http\Actions\Mafia\MafiaGetTargetsAction;
@@ -54,5 +55,11 @@ class MafiaController extends Controller
 
     public function getPlayerContracts() {
         return MafiaContractResource::collection(Auth::user()->mafiaContracts);
+    }
+
+    public function getMafiaForOwner(Mafia $mafia)
+    {
+        With::add("mafiaOwner");
+        return new MafiaResource($mafia);
     }
 }

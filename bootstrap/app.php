@@ -56,7 +56,8 @@ return Application::configure(basePath: dirname(__DIR__))
             "check_loan_request_owner_bank" => CheckLoanRequestOwnerBankMiddleware::class,
             "check_loan_request_owner_user" => CheckLoanRequestOwnerClient::class,
             "check_bank_account_owner_bank" => CheckBankAccountOwnerBank::class,
-            "user_have_already_contract" => UserHaveAlreadyContractMiddleware::class
+            "user_have_already_contract" => UserHaveAlreadyContractMiddleware::class,
+            "check_mafia_ownership" => \App\Http\Middleware\Mafia\CheckMafiaOwnershipMiddleware::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

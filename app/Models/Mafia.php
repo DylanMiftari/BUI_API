@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Http\Controllers\CompanyController;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Mafia extends Model
@@ -17,5 +18,9 @@ class Mafia extends Model
 
     public function mafiaLevel(): HasOne {
         return $this->hasOne(MafiaLevel::class, "level", "level");
+    }
+
+    public function contracts(): HasMany {
+        return $this->hasMany(MafiaContract::class, "mafiaId", "id");
     }
 }

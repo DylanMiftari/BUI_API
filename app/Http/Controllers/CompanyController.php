@@ -9,6 +9,7 @@ use App\Http\Requests\Company\CreateCompanyRequest;
 use App\Http\Resources\BankResource;
 use App\Http\Resources\CasinoResource;
 use App\Http\Resources\CompanyResource;
+use App\Http\Resources\MafiaResource;
 use App\Models\Company;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,8 @@ class CompanyController extends Controller
                 return new CasinoResource($company->casino);
             case "bank":
                 return new BankResource($company->bank);
+            case "mafia":
+                return new MafiaResource($company->mafia);
         }
     }
 }

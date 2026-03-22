@@ -14,5 +14,9 @@ Route::prefix("mafia")->middleware(["auth:sanctum", "in_travel"])->group(functio
             Route::post("/", [MafiaController::class, "createContract"])->middleware("user_have_already_contract");
             Route::get("/", [MafiaController::class, "getContractForClient"]);
         });
+
+        Route::middleware("check_mafia_ownership")->group(function () {
+            Route::get("/owner", [MafiaController::class, "getMafiaForOwner"]);
+        });
     });
 });
