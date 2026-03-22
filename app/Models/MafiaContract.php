@@ -10,6 +10,7 @@ use App\Http\Resources\HomeResource;
 use App\Http\Resources\MinimalBankAccountResource;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Resources\UserResource;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class MafiaContract extends Model
 {
@@ -51,5 +52,9 @@ class MafiaContract extends Model
             MafiaTargetType::BANK_ACCOUNT, MafiaTargetType::PHISHING => new MinimalBankAccountResource($target),
             MafiaTargetType::HOME, MafiaTargetType::HOME_DRONE => new HomeResource($target),
         };
+    }
+
+    public function mafia(): HasOne {
+        return $this->hasOne(Mafia::class, "id", "mafiaId");
     }
 }

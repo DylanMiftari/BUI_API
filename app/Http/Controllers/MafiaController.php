@@ -51,4 +51,8 @@ class MafiaController extends Controller
         }
         return null;
     }
+
+    public function getPlayerContracts() {
+        return MafiaContractResource::collection(Auth::user()->mafiaContracts);
+    }
 }
