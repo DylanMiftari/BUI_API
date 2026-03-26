@@ -13,6 +13,7 @@ use App\Http\Middleware\Casino\CheckTicketMiddleware;
 use App\Http\Middleware\Company\CheckCompanyLevelMiddleware;
 use App\Http\Middleware\Company\CheckCompanyOwernshipMiddleware;
 use App\Http\Middleware\InTravelMiddleware;
+use App\Http\Middleware\Mafia\CheckContractOwnerMiddleware;
 use App\Http\Middleware\Mafia\UserHaveAlreadyContractMiddleware;
 use App\Http\Middleware\Mine\CheckMineOwnerMiddleware;
 use App\Http\Middleware\Mine\MineNotProcessingMiddleware;
@@ -57,7 +58,8 @@ return Application::configure(basePath: dirname(__DIR__))
             "check_loan_request_owner_user" => CheckLoanRequestOwnerClient::class,
             "check_bank_account_owner_bank" => CheckBankAccountOwnerBank::class,
             "user_have_already_contract" => UserHaveAlreadyContractMiddleware::class,
-            "check_mafia_ownership" => \App\Http\Middleware\Mafia\CheckMafiaOwnershipMiddleware::class
+            "check_mafia_ownership" => \App\Http\Middleware\Mafia\CheckMafiaOwnershipMiddleware::class,
+            "check_contract_ownership" => CheckContractOwnerMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

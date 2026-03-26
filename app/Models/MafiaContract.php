@@ -57,4 +57,8 @@ class MafiaContract extends Model
     public function mafia(): HasOne {
         return $this->hasOne(Mafia::class, "id", "mafiaId");
     }
+
+    public function user(): HasOne {
+        return $this->hasOne(User::class, "id", "userId");
+    }
 }
