@@ -22,7 +22,8 @@ class MafiaContractResource extends JsonResource
             "clientPrice" => $this->clientPrice,
             "secondPrice" => $this->secondPrice,
             "mafiaLevel" => $this->mafia->level,
-            "target" => $this->targetResource()
+            "target" => $this->targetResource(),
+            "mafiaId" => $this->mafiaId
         ];
     }
 }
