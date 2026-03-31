@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Enums\MafiaContractStatus;
 use App\Enums\MafiaTargetType;
 use App\Helpers\With;
+use App\Http\Actions\Mafia\AcceptMafiaContractAction;
 use App\Http\Actions\Mafia\CreateMafiaContractAction;
 use App\Http\Actions\Mafia\GetMafiaContractFromClient;
+use App\Http\Actions\Mafia\MafiaClaimContract;
 use App\Http\Actions\Mafia\MafiaGetTargetsAction;
+use App\Http\Actions\Mafia\MafiaRobAction;
 use App\Http\Actions\Mafia\UpdateMafiaContractAction;
 use App\Http\Requests\Mafia\CreateContractRequest;
 use App\Http\Requests\Mafia\UpdateContractPriceRequest;
@@ -61,7 +64,8 @@ class MafiaController extends Controller
 
     public function getPlayerContracts()
     {
-        return MafiaContractResource::collection(Auth::user()->mafiaContracts);
+        return MafiaContractResource::collection(Auth::user()->mafiaContracts()->where("robState", "!=",
+        MafiaContractStatus::FINISHED)->get());
     }
 
     public function getMafiaForOwner(Mafia $mafia)
@@ -87,6 +91,30 @@ class MafiaController extends Controller
     {
         $this->authorize("updatePriceForClient", $mafiaContract);
         $action->handle($mafiaContract, $request->input("price"), MafiaContractStatus::WAIT_ON_MAFIA);
+        return response()->noContent();
+    }
+
+    public function rob(Mafia $mafia, MafiaContract $mafiaContract, MafiaRobAction $action)
+    {
+        $this->authorize("rob", $mafiaContract);
+        $res = $action->handle($mafiaContract);
+
+        return $res;
+    }
+
+    public function acceptContract(Mafia $mafia, MafiaContract $mafiaContract, AcceptMafiaContractAction $action)
+    {
+        $this->authorize("acceptContract", $mafiaContract);
+        $action->handle($mafiaContract);
+
+        return response()->noContent();
+    }
+
+    public function claimContract(Mafia $mafia, MafiaContract $mafiaContract, MafiaClaimContract $action)
+    {
+        $this->authorize("claimContract", $mafiaContract);
+        $action->handle($mafiaContract);
+
         return response()->noContent();
     }
 }

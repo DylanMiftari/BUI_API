@@ -16,6 +16,8 @@ Route::prefix("mafia")->middleware(["auth:sanctum", "in_travel"])->group(functio
 
             Route::prefix("{mafiaContract}")->middleware("check_contract_ownership")->group(function () {
                 Route::patch("/updatePrice", [MafiaController::class, "updatePriceForClient"]);
+                Route::patch("/accept", [MafiaController::class, "acceptContract"]);
+                Route::patch("/claim", [MafiaController::class, "claimContract"]);
             });
         });
 
@@ -23,6 +25,7 @@ Route::prefix("mafia")->middleware(["auth:sanctum", "in_travel"])->group(functio
             Route::get("/owner", [MafiaController::class, "getMafiaForOwner"]);
             Route::prefix("owner/contract/{mafiaContract}")->group(function () {
                 Route::patch("/updatePrice", [MafiaController::class, "updatePriceForOwner"]);
+                Route::patch("/rob", [MafiaController::class, "rob"]);
             });
         });
     });
